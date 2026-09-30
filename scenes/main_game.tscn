@@ -1,0 +1,33 @@
+[gd_scene format=3 uid="uid://b7wrc6o32ofww"]
+
+[ext_resource type="Texture2D" uid="uid://bykahh02f3aoe" path="res://background/Full-Background.png" id="1_s3esy"]
+[ext_resource type="PackedScene" uid="uid://bs7xchaii58py" path="res://scenes/player.tscn" id="2_72e8q"]
+[ext_resource type="Script" uid="uid://dyh8n57vt1wul" path="res://scripts/player.gd" id="3_0rdsr"]
+[ext_resource type="PackedScene" uid="uid://bnrilr5q1g7ao" path="res://scenes/platform.tscn" id="3_d2op2"]
+
+[node name="MainGame" type="Node" unique_id=1854347214]
+
+[node name="Background" type="TextureRect" parent="." unique_id=759908965]
+offset_right = 3072.0
+offset_bottom = 1536.0
+scale = Vector2(0.44718862, 0.48817334)
+texture = ExtResource("1_s3esy")
+
+[node name="Player" parent="." unique_id=665909704 instance=ExtResource("2_72e8q")]
+position = Vector2(69, 620)
+script = ExtResource("3_0rdsr")
+x_speed = 350.0
+jump = 500.0
+
+[node name="platform" parent="." unique_id=1289757584 instance=ExtResource("3_d2op2")]
+position = Vector2(698, 400)
+
+[node name="platform2" parent="." unique_id=561577974 instance=ExtResource("3_d2op2")]
+position = Vector2(317, 531)
+
+[node name="Camera2D" type="Camera2D" parent="." unique_id=650491825]
+scale = Vector2(-130.4795, 73.67025)
+limit_left = 0
+limit_top = 0
+limit_right = 1375
+limit_bottom = 755

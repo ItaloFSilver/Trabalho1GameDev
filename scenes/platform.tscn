@@ -1,0 +1,16 @@
+[gd_scene format=3 uid="uid://bnrilr5q1g7ao"]
+
+[ext_resource type="Texture2D" uid="uid://o1w4ijci8jje" path="res://sprites/barra.png" id="1_ba0x2"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_g2els"]
+size = Vector2(220, 54)
+
+[node name="platform" type="Area2D" unique_id=1289757584]
+scale = Vector2(1, 0.48000002)
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=554776337]
+rotation = -1.5744336
+texture = ExtResource("1_ba0x2")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=669526490]
+shape = SubResource("RectangleShape2D_g2els")
