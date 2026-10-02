@@ -1,6 +1,6 @@
 [gd_scene format=3 uid="uid://bs7xchaii58py"]
 
-[ext_resource type="Texture2D" uid="uid://dq6oigis5v05u" path="res://sprites/frame-1.png" id="1_3vyb7"]
+[ext_resource type="Texture2D" uid="uid://dq6oigis5v05u" path="res://assets/sprites/frame-1.png" id="1_3vyb7"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_72e8q"]
 radius = 47.999763
@@ -8,8 +8,6 @@ height = 134.0
 
 [node name="Player" type="Area2D" unique_id=665909704]
 scale = Vector2(0.40000117, 0.36000055)
-
-[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=1370149683]
 
 [node name="Sprite2D" type="Sprite2D" parent="." unique_id=1141536427]
 position = Vector2(-3.8146973e-06, -1)

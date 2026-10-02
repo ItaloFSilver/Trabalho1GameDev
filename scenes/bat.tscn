@@ -1,0 +1,36 @@
+[gd_scene format=3 uid="uid://bh3kaurvd8n8c"]
+
+[ext_resource type="Script" uid="uid://cn35ovrphq6nd" path="res://scripts/bat.gd" id="1_lv0ya"]
+[ext_resource type="Texture2D" uid="uid://bc558t6mbi2f7" path="res://assets/sprites/bat/pixil-frame-0.png" id="1_ss3tx"]
+[ext_resource type="Texture2D" uid="uid://dnm6ok1ec81iq" path="res://assets/sprites/bat/pixil-frame-1.png" id="2_lv0ya"]
+[ext_resource type="Texture2D" uid="uid://tbh2n8glkmwk" path="res://assets/sprites/bat/pixil-frame-2.png" id="3_5fn3r"]
+[ext_resource type="Texture2D" uid="uid://b08pfx01y3nin" path="res://assets/sprites/bat/pixil-frame-3.png" id="4_8qtcx"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_ipiyd"]
+animations = [{
+"frames": [{
+"duration": 0.5,
+"texture": ExtResource("1_ss3tx")
+}, {
+"duration": 0.5,
+"texture": ExtResource("2_lv0ya")
+}, {
+"duration": 0.5,
+"texture": ExtResource("3_5fn3r")
+}, {
+"duration": 0.5,
+"texture": ExtResource("4_8qtcx")
+}],
+"loop": 1,
+"name": &"default",
+"speed": 6.0
+}]
+
+[node name="bat" type="Area2D" unique_id=1317970611]
+script = ExtResource("1_lv0ya")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=233036270]
+position = Vector2(43.5, 31.5)
+scale = Vector2(1.87, 1.63)
+sprite_frames = SubResource("SpriteFrames_ipiyd")
+frame_progress = 0.880197
