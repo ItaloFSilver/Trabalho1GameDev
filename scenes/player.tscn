@@ -1,20 +1,28 @@
 [gd_scene format=3 uid="uid://bs7xchaii58py"]
 
-[ext_resource type="Texture2D" uid="uid://dq6oigis5v05u" path="res://assets/sprites/frame-1.png" id="1_3vyb7"]
+[ext_resource type="Script" uid="uid://7h5ps3lnibn6" path="res://scripts/Hero/state_machine.gd" id="1_3vyb7"]
+[ext_resource type="Script" uid="uid://cnnowcl70f37k" path="res://scripts/Hero/states/idle.gd" id="2_g2els"]
+[ext_resource type="Script" uid="uid://b5xmtaxwnjxtr" path="res://scripts/Hero/states/walk.gd" id="3_qhqgy"]
+[ext_resource type="Script" uid="uid://87781f7kexs2" path="res://scripts/Hero/states/jump.gd" id="4_dqkch"]
+[ext_resource type="Script" uid="uid://bo8j2n05e01b6" path="res://scripts/Hero/states/attack.gd" id="5_qlg0r"]
 
-[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_72e8q"]
-radius = 47.999763
-height = 134.0
+[node name="Player" type="CharacterBody2D" unique_id=55681833]
 
-[node name="Player" type="Area2D" unique_id=665909704]
-scale = Vector2(0.40000117, 0.36000055)
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=1399851156]
 
-[node name="Sprite2D" type="Sprite2D" parent="." unique_id=1141536427]
-position = Vector2(-3.8146973e-06, -1)
-scale = Vector2(0.2751397, 0.2816456)
-texture = ExtResource("1_3vyb7")
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1333845448]
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=2072327783]
-position = Vector2(10, 0)
-rotation = 1.5289023
-shape = SubResource("CapsuleShape2D_72e8q")
+[node name="State_Machine" type="Node" parent="." unique_id=29612126]
+script = ExtResource("1_3vyb7")
+
+[node name="Idle" type="Node" parent="State_Machine" unique_id=287779343]
+script = ExtResource("2_g2els")
+
+[node name="Walk" type="Node" parent="State_Machine" unique_id=387274690]
+script = ExtResource("3_qhqgy")
+
+[node name="Jump" type="Node" parent="State_Machine" unique_id=204736620]
+script = ExtResource("4_dqkch")
+
+[node name="Attack" type="Node" parent="State_Machine" unique_id=677220337]
+script = ExtResource("5_qlg0r")
