@@ -5,6 +5,7 @@ const JUMP = "jump"
 const IDLE = "idle"
 const ATTACK = "attack"
 const WALK = "walk"
+const CROUCH = "crouch"
 
 var player : Player
 

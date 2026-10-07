@@ -15,9 +15,8 @@ scale = Vector2(0.44718862, 0.48817334)
 texture = ExtResource("1_s3esy")
 
 [node name="Player" parent="." unique_id=665909704 instance=ExtResource("2_72e8q")]
-position = Vector2(69, 620)
+position = Vector2(305, 466)
 script = ExtResource("3_0rdsr")
-x_speed = 350.0
 jump = 500.0
 
 [node name="platform" parent="." unique_id=1289757584 instance=ExtResource("3_d2op2")]
