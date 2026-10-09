@@ -9,19 +9,14 @@ extends State
 
 
 func enter(_previous_state: String, _data := {}) -> void:
-	# 1. Aplica o impulso vertical do pulo
 	player.velocity.y = jump_velocity
 
-	# 2. Mecânica clássica do Castlevania NES (Pulo Rígido/Travado):
-	# A direcional no momento exato da decolagem define a trajetória no ar.
 	var input_direction := Input.get_axis("move_left", "move_right")
 	player.velocity.x = input_direction * move_speed
 
-	# 3. Orientação do sprite para o lado do pulo
 	if input_direction != 0 and player.has_node("Sprite2D"):
 		player.get_node("Sprite2D").flip_h = (input_direction < 0)
 
-	# 4. Tocar animação de Pulo
 	if player.has_node("AnimationPlayer"):
 		player.get_node("AnimationPlayer").play("jump")
 

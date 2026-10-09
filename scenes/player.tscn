@@ -2,6 +2,7 @@
 
 [ext_resource type="Script" uid="uid://7h5ps3lnibn6" path="res://scripts/Hero/state_machine.gd" id="1_3vyb7"]
 [ext_resource type="Texture2D" uid="uid://bweitkcvb4svm" path="res://assets/sprites/player/Spritesheets/hero-idle.png" id="1_tuyoq"]
+[ext_resource type="Texture2D" uid="uid://gx47tas84oaq" path="res://assets/sprites/player/Spritesheets/hero-attack.png" id="2_3v2ag"]
 [ext_resource type="Texture2D" uid="uid://becvchateixhp" path="res://assets/sprites/player/Spritesheets/hero-crouch.png" id="2_d2wvv"]
 [ext_resource type="Texture2D" uid="uid://d4mex177updki" path="res://assets/sprites/player/Spritesheets/hero-run.png" id="2_fjrip"]
 [ext_resource type="Script" uid="uid://cnnowcl70f37k" path="res://scripts/Hero/states/idle.gd" id="2_g2els"]
@@ -11,6 +12,9 @@
 [ext_resource type="Script" uid="uid://bo8j2n05e01b6" path="res://scripts/Hero/states/attack.gd" id="5_qlg0r"]
 [ext_resource type="Script" uid="uid://c322ry1b2eeyn" path="res://scripts/Hero/states/fall.gd" id="9_ur7pv"]
 [ext_resource type="Script" uid="uid://btqqy7et1m5cs" path="res://scripts/Hero/states/crouch.gd" id="9_y4r1p"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_m3wds"]
+size = Vector2(29, 8)
 
 [sub_resource type="Animation" id="Animation_fjrip"]
 length = 0.001
@@ -37,6 +41,118 @@ tracks/1/keys = {
 "transitions": PackedFloat32Array(1),
 "update": 1,
 "values": [0]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("weapon:shape")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [SubResource("RectangleShape2D_m3wds")]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("weapon:position")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(28.5, 18)]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("weapon:disabled")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+
+[sub_resource type="Animation" id="Animation_d2wvv"]
+resource_name = "attack"
+length = 0.5
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:hframes")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [5]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Sprite2D:frame")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.033333335, 0.06666667, 0.10000001, 0.13333334),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1),
+"update": 1,
+"values": [0, 1, 2, 3, 4]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("weapon:shape")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0.05188293, 0.06798453),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [SubResource("RectangleShape2D_m3wds"), SubResource("RectangleShape2D_m3wds")]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("weapon:position")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0.05188293, 0.06798453),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(17, 20), Vector2(28.5, 18)]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("weapon:disabled")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0, 0.06261733),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [true, false]
+}
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("Sprite2D:texture")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [ExtResource("2_3v2ag")]
 }
 
 [sub_resource type="Animation" id="Animation_3v2ag"]
@@ -81,7 +197,7 @@ tracks/2/keys = {
 tracks/3/type = "value"
 tracks/3/imported = false
 tracks/3/enabled = true
-tracks/3/path = NodePath("CollisionShape2D:rotation")
+tracks/3/path = NodePath("Body:rotation")
 tracks/3/interp = 1
 tracks/3/loop_wrap = true
 tracks/3/keys = {
@@ -93,7 +209,7 @@ tracks/3/keys = {
 tracks/4/type = "value"
 tracks/4/imported = false
 tracks/4/enabled = true
-tracks/4/path = NodePath("CollisionShape2D:position")
+tracks/4/path = NodePath("Body:position")
 tracks/4/interp = 1
 tracks/4/loop_wrap = true
 tracks/4/keys = {
@@ -101,6 +217,18 @@ tracks/4/keys = {
 "transitions": PackedFloat32Array(1),
 "update": 0,
 "values": [Vector2(-1, 31.000002)]
+}
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("weapon:disabled")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
 }
 
 [sub_resource type="Animation" id="Animation_smehm"]
@@ -145,7 +273,7 @@ tracks/2/keys = {
 tracks/3/type = "value"
 tracks/3/imported = false
 tracks/3/enabled = true
-tracks/3/path = NodePath("CollisionShape2D:position")
+tracks/3/path = NodePath("Body:position")
 tracks/3/interp = 1
 tracks/3/loop_wrap = true
 tracks/3/keys = {
@@ -157,7 +285,7 @@ tracks/3/keys = {
 tracks/4/type = "value"
 tracks/4/imported = false
 tracks/4/enabled = true
-tracks/4/path = NodePath("CollisionShape2D:rotation")
+tracks/4/path = NodePath("Body:rotation")
 tracks/4/interp = 1
 tracks/4/loop_wrap = true
 tracks/4/keys = {
@@ -169,7 +297,7 @@ tracks/4/keys = {
 tracks/5/type = "value"
 tracks/5/imported = false
 tracks/5/enabled = true
-tracks/5/path = NodePath("CollisionShape2D:scale")
+tracks/5/path = NodePath("Body:scale")
 tracks/5/interp = 1
 tracks/5/loop_wrap = true
 tracks/5/keys = {
@@ -221,7 +349,7 @@ tracks/2/keys = {
 tracks/3/type = "value"
 tracks/3/imported = false
 tracks/3/enabled = true
-tracks/3/path = NodePath("CollisionShape2D:position")
+tracks/3/path = NodePath("Body:position")
 tracks/3/interp = 1
 tracks/3/loop_wrap = true
 tracks/3/keys = {
@@ -273,7 +401,7 @@ tracks/2/keys = {
 tracks/3/type = "value"
 tracks/3/imported = false
 tracks/3/enabled = true
-tracks/3/path = NodePath("CollisionShape2D:position")
+tracks/3/path = NodePath("Body:position")
 tracks/3/interp = 1
 tracks/3/loop_wrap = true
 tracks/3/keys = {
@@ -285,7 +413,7 @@ tracks/3/keys = {
 tracks/4/type = "value"
 tracks/4/imported = false
 tracks/4/enabled = true
-tracks/4/path = NodePath("CollisionShape2D:rotation")
+tracks/4/path = NodePath("Body:rotation")
 tracks/4/interp = 1
 tracks/4/loop_wrap = true
 tracks/4/keys = {
@@ -298,6 +426,7 @@ tracks/4/keys = {
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_ur7pv"]
 _data = {
 &"RESET": SubResource("Animation_fjrip"),
+&"attack": SubResource("Animation_d2wvv"),
 &"crouch": SubResource("Animation_3v2ag"),
 &"idle": SubResource("Animation_smehm"),
 &"jump": SubResource("Animation_y4r1p"),
@@ -315,11 +444,15 @@ libraries/ = SubResource("AnimationLibrary_ur7pv")
 
 [node name="Sprite2D" type="Sprite2D" parent="." unique_id=1399851156]
 texture = ExtResource("1_tuyoq")
-hframes = 6
+hframes = 5
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1333845448]
+[node name="Body" type="CollisionShape2D" parent="." unique_id=1333845448]
 position = Vector2(0, 22)
 shape = SubResource("CapsuleShape2D_m3wds")
+
+[node name="weapon" type="CollisionShape2D" parent="." unique_id=574957520]
+position = Vector2(28.5, 18)
+shape = SubResource("RectangleShape2D_m3wds")
 
 [node name="State_Machine" type="Node" parent="." unique_id=29612126]
 script = ExtResource("1_3vyb7")

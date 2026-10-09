@@ -22,9 +22,7 @@ func _physics_update(delta: float) -> void:
 	#	finished.emit("Fall", {})
 	#	return
 
-	#player.move_and_slide()
-
-	# --- CHECAGEM DE TRANSIÇÕES (INPUTS) ---
+	player.move_and_slide()
 
 	# 2. Atacar (Ataque comum ou Sub-arma se estiver segurando Cima)
 	if Input.is_action_just_pressed("attack"):
