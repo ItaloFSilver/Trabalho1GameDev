@@ -1,36 +1,96 @@
 [gd_scene format=3 uid="uid://b7wrc6o32ofww"]
 
-[ext_resource type="Texture2D" uid="uid://bykahh02f3aoe" path="res://assets/fonts/Full-Background.png" id="1_s3esy"]
-[ext_resource type="PackedScene" uid="uid://bs7xchaii58py" path="res://scenes/player.tscn" id="2_72e8q"]
-[ext_resource type="Script" uid="uid://dyh8n57vt1wul" path="res://scripts/Hero/player.gd" id="3_0rdsr"]
-[ext_resource type="PackedScene" uid="uid://bnrilr5q1g7ao" path="res://scenes/platform.tscn" id="3_d2op2"]
-[ext_resource type="PackedScene" uid="uid://bh3kaurvd8n8c" path="res://scenes/bat.tscn" id="5_ipu61"]
+[ext_resource type="Texture2D" path="res://assets/environment/background.png" id="1_bg"]
+[ext_resource type="Texture2D" path="res://assets/environment/mountains.png" id="2_mtn"]
+[ext_resource type="Texture2D" path="res://assets/environment/graveyard.png" id="3_grave"]
+[ext_resource type="Texture2D" path="res://assets/environment/tileset.png" id="4_tiles"]
+[ext_resource type="PackedScene" uid="uid://bs7xchaii58py" path="res://scenes/player.tscn" id="5_player"]
+[ext_resource type="PackedScene" uid="uid://bnrilr5q1g7ao" path="res://scenes/platform.tscn" id="6_platform"]
+[ext_resource type="PackedScene" uid="uid://bh3kaurvd8n8c" path="res://scenes/bat.tscn" id="7_bat"]
+[ext_resource type="PackedScene" path="res://scenes/world/candle.tscn" id="8_candle"]
 
-[node name="MainGame" type="Node" unique_id=1854347214]
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_ground"]
+size = Vector2(1536, 32)
 
-[node name="Background" type="TextureRect" parent="." unique_id=759908965]
-offset_right = 3072.0
-offset_bottom = 1536.0
-scale = Vector2(0.44718862, 0.48817334)
-texture = ExtResource("1_s3esy")
+[sub_resource type="AtlasTexture" id="AtlasTexture_tile_floor"]
+atlas = ExtResource("4_tiles")
+region = Rect2(16, 16, 96, 32)
 
-[node name="Player" parent="." unique_id=665909704 instance=ExtResource("2_72e8q")]
-position = Vector2(305, 466)
-script = ExtResource("3_0rdsr")
-jump = 500.0
+[node name="MainGame" type="Node2D" unique_id=1854347214]
 
-[node name="platform" parent="." unique_id=1289757584 instance=ExtResource("3_d2op2")]
-position = Vector2(698, 400)
+[node name="ParallaxBackground" type="ParallaxBackground" parent="." unique_id=901001]
 
-[node name="platform2" parent="." unique_id=561577974 instance=ExtResource("3_d2op2")]
-position = Vector2(317, 531)
+[node name="LayerSky" type="ParallaxLayer" parent="ParallaxBackground" unique_id=901002]
+motion_scale = Vector2(0.1, 0.1)
+motion_mirroring = Vector2(384, 0)
 
-[node name="Camera2D" type="Camera2D" parent="." unique_id=650491825]
-scale = Vector2(-130.4795, 73.67025)
+[node name="SkySprite" type="Sprite2D" parent="ParallaxBackground/LayerSky" unique_id=901003]
+texture = ExtResource("1_bg")
+centered = false
+
+[node name="LayerMountains" type="ParallaxLayer" parent="ParallaxBackground" unique_id=901004]
+motion_scale = Vector2(0.25, 0.25)
+motion_mirroring = Vector2(384, 0)
+
+[node name="MountainsSprite" type="Sprite2D" parent="ParallaxBackground/LayerMountains" unique_id=901005]
+position = Vector2(0, 45)
+texture = ExtResource("2_mtn")
+centered = false
+
+[node name="MountainsSprite2" type="Sprite2D" parent="ParallaxBackground/LayerMountains" unique_id=901006]
+position = Vector2(192, 45)
+texture = ExtResource("2_mtn")
+centered = false
+
+[node name="LayerGraveyard" type="ParallaxLayer" parent="ParallaxBackground" unique_id=901007]
+motion_scale = Vector2(0.5, 0.5)
+motion_mirroring = Vector2(384, 0)
+
+[node name="GraveyardSprite" type="Sprite2D" parent="ParallaxBackground/LayerGraveyard" unique_id=901008]
+position = Vector2(0, 101)
+texture = ExtResource("3_grave")
+centered = false
+
+[node name="Ground" type="StaticBody2D" parent="." unique_id=801001]
+position = Vector2(0, 208)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Ground" unique_id=801002]
+position = Vector2(768, 16)
+shape = SubResource("RectangleShape2D_ground")
+
+[node name="GroundVisual" type="TextureRect" parent="Ground" unique_id=801003]
+offset_right = 1536.0
+offset_bottom = 32.0
+texture = SubResource("AtlasTexture_tile_floor")
+stretch_mode = 1
+
+[node name="Platforms" type="Node2D" parent="."]
+
+[node name="Platform" parent="Platforms" instance=ExtResource("6_platform")]
+position = Vector2(280, 168)
+
+[node name="Candles" type="Node2D" parent="."]
+
+[node name="CandleGround1" parent="Candles" instance=ExtResource("8_candle")]
+position = Vector2(130, 192)
+
+[node name="CandleOnPlatform" parent="Candles" instance=ExtResource("8_candle")]
+position = Vector2(280, 152)
+
+[node name="CandleGround2" parent="Candles" instance=ExtResource("8_candle")]
+position = Vector2(450, 192)
+
+[node name="Player" parent="." unique_id=665909704 instance=ExtResource("5_player")]
+position = Vector2(60, 170)
+
+[node name="Camera2D" type="Camera2D" parent="Player" unique_id=650491825]
+position = Vector2(0, -30)
+zoom = Vector2(3, 3)
 limit_left = 0
 limit_top = 0
-limit_right = 1375
-limit_bottom = 755
+limit_right = 1536
+limit_bottom = 240
+position_smoothing_enabled = true
 
-[node name="bat" parent="." unique_id=1317970611 instance=ExtResource("5_ipu61")]
-position = Vector2(208, 347)
+[node name="bat" parent="." unique_id=1317970611 instance=ExtResource("7_bat")]
+position = Vector2(208, 60)

@@ -20,6 +20,10 @@ config/icon="res://icon.svg"
 window/stretch/mode="canvas_items"
 window/stretch/aspect="expand"
 
+[dotnet]
+
+project/assembly_name="Platform"
+
 [input]
 
 move_left={
@@ -53,5 +57,7 @@ move_down={
 3d/physics_engine="Jolt Physics"
 
 [rendering]
+
+textures/canvas_textures/default_texture_filter=0
 
 rendering_device/driver.windows="d3d12"

@@ -1,4 +1,3 @@
-# walk_state.gd
 class_name WalkState
 extends State
 
@@ -15,11 +14,12 @@ func enter(_previous_state: String, _data := {}) -> void:
 
 func _physics_update(delta: float) -> void:
 	# 1. Se o jogador andar para fora de uma plataforma, entra no estado Fall
-	#if not player.is_on_floor():
-	#	player.velocity += player.get_gravity() * delta
-	#	player.move_and_slide()
-	#	finished.emit("Fall", {})
-	#	return
+	if not player.is_on_floor():
+		player.velocity += player.get_gravity() * delta
+		player.move_and_slide()
+		finished.emit("Fall", {})
+		return
+
 	if player.has_node("AnimationPlayer"):
 		player.get_node("AnimationPlayer").play("walk")
 
