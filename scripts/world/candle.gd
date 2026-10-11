@@ -3,6 +3,7 @@ extends Area2D
 
 ## Cena do item a ser solto (por padrão, solta um coração)
 @export var drop_item_scene: PackedScene = preload("res://scenes/items/heart.tscn")
+@export var hit_sound: AudioStream = preload("res://assets/audio/sfx/kill.ogg")
 
 var is_destroyed: bool = false
 
@@ -31,33 +32,52 @@ func _check_attack_hit(body: Node2D) -> void:
 	if sm and sm.state != null:
 		# Só quebra se o jogador estiver de fato no estado de ATAQUE ("Attack")
 		if sm.state.name == "Attack":
-			if _is_player_facing_candle(body):
+			if _is_player_hitting_candle(body):
 				destroy()
 
-func _is_player_facing_candle(player: Node2D) -> bool:
-	var sprite: Sprite2D = player.get_node_or_null("Sprite2D")
+func _is_player_hitting_candle(player: Node2D) -> bool:
 	var diff_x: float = global_position.x - player.global_position.x
+	var diff_y: float = abs(global_position.y - (player.global_position.y + 20.0))
 	
+	# Checagem vertical: o chicote atinge na altura do corpo do Simon
+	if diff_y > 35.0:
+		return false
+		
+	var sprite: Sprite2D = player.get_node_or_null("Sprite2D")
+	var is_facing_left: bool = false
 	if sprite != null:
-		# Se flip_h for true, Simon está olhando para a ESQUERDA
-		if sprite.flip_h and diff_x > 10.0:
-			return false
-		# Se flip_h for false, Simon está olhando para a DIREITA
-		if not sprite.flip_h and diff_x < -10.0:
-			return false
-			
-	return true
+		is_facing_left = sprite.flip_h
+	else:
+		is_facing_left = player.velocity.x < 0
+		
+	# Alcance do chicote clássico (~45 pixels)
+	var whip_reach: float = 45.0
+	
+	if is_facing_left:
+		# Simon batendo para a ESQUERDA: vela deve estar à esquerda (diff_x <= 15)
+		return diff_x <= 15.0 and diff_x >= -whip_reach
+	else:
+		# Simon batendo para a DIREITA: vela deve estar à direita (diff_x >= -15)
+		return diff_x >= -15.0 and diff_x <= whip_reach
 
 func destroy() -> void:
 	if is_destroyed:
 		return
 	is_destroyed = true
 
-	# 1. Instancia o item coletável no mesmo lugar da vela
+	# 1. Toca som clássico de destruição / chicotada
+	if hit_sound:
+		var sfx := AudioStreamPlayer.new()
+		sfx.stream = hit_sound
+		sfx.finished.connect(sfx.queue_free)
+		get_tree().root.add_child(sfx)
+		sfx.play()
+
+	# 2. Instancia o item coletável no mesmo lugar da vela
 	if drop_item_scene != null:
 		var item: Node2D = drop_item_scene.instantiate()
 		item.global_position = global_position
 		get_parent().call_deferred("add_child", item)
 
-	# 2. Remove a vela do jogo
+	# 3. Remove a vela do jogo
 	queue_free()
