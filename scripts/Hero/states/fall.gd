@@ -16,16 +16,16 @@ func enter(_previous_state: String, _data := {}) -> void:
 
 
 func _physics_update(delta: float) -> void:
-	# 1. Aplica a aceleração da gravidade continuada
+	# Aplica a aceleração da gravidade continuada
 	player.velocity += player.get_gravity() * delta
 	player.move_and_slide()
 
-	# 2. Ataque aéreo (Ataque no ar durante a queda)
+	#  Ataque aéreo (Ataque no ar durante a queda)
 	if Input.is_action_just_pressed("attack"):
 		finished.emit("Attack", {})
 		return
 
-	# 3. Tocou o solo (Pouso)
+	#  Tocou o solo (Pouso)
 	if player.is_on_floor():
 		# Se ainda houver velocidade horizontal ao tocar o chão, continua caminhando
 		if player.velocity.x != 0 and Input.get_axis("move_left", "move_right") != 0:

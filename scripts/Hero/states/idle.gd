@@ -11,10 +11,9 @@ func enter(_previous_state: String, _data := {}) -> void:
 
 
 func _physics_update(delta: float) -> void:
-	if player.has_node("AnimationPlayer"):
-		player.get_node("AnimationPlayer").play("idle")
-		
-	# 1. Se estiver no ar, aplica gravidade e transita para Fall
+	
+  player.anim.play("idle")
+	# 1. Aplicar gravidade básica para mantê-lo colado no chão
 	if not player.is_on_floor():
 		player.velocity += player.get_gravity() * delta
 		player.move_and_slide()
@@ -42,4 +41,13 @@ func _physics_update(delta: float) -> void:
 	var input_direction := Input.get_axis("move_left", "move_right")
 	if input_direction != 0:
 		finished.emit("Walk", {})
+		return
+		
+	if player.is_near_stairs and Input.is_action_just_pressed("move_up"):
+		finished.emit("Stairs", {"direction": player.current_stair_direction})
+		return
+		
+	# Checa se pode descer uma escada
+	if player.is_near_stairs and Input.is_action_just_pressed("move_down"):
+		finished.emit("Stairs", {"direction": player.current_stair_direction})
 		return
