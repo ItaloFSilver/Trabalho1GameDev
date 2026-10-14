@@ -8,13 +8,11 @@ extends State
 func enter(_previous_state: String, _data := {}) -> void:
 	# Zerar a velocidade horizontal imediatamente ao ficar parado
 	player.velocity.x = 0
-	
-	# Executar a animação de Idle
 
 
 func _physics_update(delta: float) -> void:
 	if player.has_node("AnimationPlayer"):
-		player.get_node("AnimationPlayer").play("idle")
+		player.anim.play("idle")
 	# 1. Aplicar gravidade básica para mantê-lo colado no chão
 	#if not player.is_on_floor():
 	#	player.velocity += player.get_gravity() * delta
@@ -43,4 +41,13 @@ func _physics_update(delta: float) -> void:
 	var input_direction := Input.get_axis("move_left", "move_right")
 	if input_direction != 0:
 		finished.emit("Walk", {})
+		return
+		
+	if player.is_near_stairs and Input.is_action_just_pressed("move_up"):
+		finished.emit("Stairs", {"direction": player.current_stair_direction})
+		return
+		
+	# Checa se pode descer uma escada
+	if player.is_near_stairs and Input.is_action_just_pressed("move_down"):
+		finished.emit("Stairs", {"direction": player.current_stair_direction})
 		return

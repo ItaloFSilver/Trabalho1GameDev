@@ -4,7 +4,7 @@ class_name AttackState extends State
 
 
 func enter(_previous_state: String, _data := {}) -> void:
-	# 1. Parar completamente a movimentação horizontal ao abaixar
+	# Parar completamente a movimentação horizontal ao abaixar
 	player.velocity.x = 0
 	
 	if player.has_node("AnimationPlayer"):
@@ -16,7 +16,7 @@ func enter(_previous_state: String, _data := {}) -> void:
 		anim_player.play("attack")
 
 func _physics_update(delta: float) -> void:
-	# 1. Aplica a gravidade para garantir que permaneça colado ao chão
+	# Aplica a gravidade para garantir que permaneça colado ao chão
 	#if not player.is_on_floor():
 	#	player.velocity += player.get_gravity() * delta
 	#	player.move_and_slide()
