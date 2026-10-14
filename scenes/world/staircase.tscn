@@ -1,0 +1,27 @@
+[gd_scene format=3 uid="uid://dw8rsn3yn1jvc"]
+
+[ext_resource type="Script" path="res://scripts/world/staircase.gd" id="1_script"]
+[ext_resource type="Texture2D" path="res://assets/environment/stair_castlevania_step.png" id="2_step"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_stair_entry"]
+size = Vector2(16, 20)
+
+[node name="Staircase" type="Node2D"]
+script = ExtResource("1_script")
+step_count = 4
+step_texture = ExtResource("2_step")
+
+[node name="StepsVisual" type="Node2D" parent="."]
+
+[node name="BottomEntry" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="BottomEntry"]
+position = Vector2(0, -2)
+shape = SubResource("RectangleShape2D_stair_entry")
+
+[node name="TopEntry" type="Area2D" parent="."]
+position = Vector2(48, -48)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="TopEntry"]
+position = Vector2(0, -2)
+shape = SubResource("RectangleShape2D_stair_entry")

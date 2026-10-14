@@ -11,14 +11,14 @@ func enter(_previous_state: String, _data := {}) -> void:
 
 
 func _physics_update(delta: float) -> void:
-	if player.has_node("AnimationPlayer"):
-		player.anim.play("idle")
+	
+  player.anim.play("idle")
 	# 1. Aplicar gravidade básica para mantê-lo colado no chão
-	#if not player.is_on_floor():
-	#	player.velocity += player.get_gravity() * delta
-	#	player.move_and_slide()
-	#	finished.emit("Fall", {})
-	#	return
+	if not player.is_on_floor():
+		player.velocity += player.get_gravity() * delta
+		player.move_and_slide()
+		finished.emit("Fall", {})
+		return
 
 	player.move_and_slide()
 

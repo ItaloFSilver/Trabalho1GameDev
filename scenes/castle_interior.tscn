@@ -1,0 +1,118 @@
+[gd_scene format=3 uid="uid://ci8w2laq7p3xm"]
+
+[ext_resource type="Texture2D" path="res://assets/environment/backgrounds/castle_church_bg.png" id="1_bg"]
+[ext_resource type="Texture2D" path="res://assets/environment/tilesets/castle_church_tileset.png" id="2_tileset"]
+[ext_resource type="Texture2D" path="res://assets/environment/props/castle_column.png" id="3_column"]
+[ext_resource type="PackedScene" path="res://scenes/world/candle.tscn" id="4_candle"]
+[ext_resource type="PackedScene" path="res://scenes/world/staircase.tscn" id="5_stairs"]
+[ext_resource type="PackedScene" uid="uid://bnrilr5q1g7ao" path="res://scenes/platform.tscn" id="6_platform"]
+[ext_resource type="PackedScene" uid="uid://bs7xchaii58py" path="res://scenes/player.tscn" id="7_player"]
+[ext_resource type="PackedScene" path="res://scenes/world/door_transition.tscn" id="8_door"]
+[ext_resource type="AudioStream" path="res://assets/audio/music/stage1_bgm.ogg" id="9_music"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_interior_ground"]
+size = Vector2(768, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_stone_floor"]
+atlas = ExtResource("2_tileset")
+region = Rect2(70, 167, 70, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_castle_arch"]
+atlas = ExtResource("2_tileset")
+region = Rect2(250, 16, 70, 94)
+
+[node name="CastleInterior" type="Node2D"]
+
+[node name="ColorRectDark" type="ColorRect" parent="."]
+offset_right = 768.0
+offset_bottom = 240.0
+color = Color(0.07, 0.05, 0.12, 1)
+
+[node name="BackgroundSprites" type="Node2D" parent="."]
+
+[node name="Bg1" type="Sprite2D" parent="BackgroundSprites"]
+position = Vector2(0, 16)
+texture = ExtResource("1_bg")
+centered = false
+
+[node name="Bg2" type="Sprite2D" parent="BackgroundSprites"]
+position = Vector2(624, 16)
+texture = ExtResource("1_bg")
+centered = false
+
+[node name="Columns" type="Node2D" parent="."]
+
+[node name="Column1" type="Sprite2D" parent="Columns"]
+position = Vector2(170, 18)
+texture = ExtResource("3_column")
+centered = false
+
+[node name="Column2" type="Sprite2D" parent="Columns"]
+position = Vector2(480, 18)
+texture = ExtResource("3_column")
+centered = false
+
+[node name="EntranceDoorVisual" type="Sprite2D" parent="."]
+position = Vector2(35, 161)
+texture = SubResource("AtlasTexture_castle_arch")
+
+[node name="ReturnDoor" parent="." instance=ExtResource("8_door")]
+position = Vector2(25, 184)
+target_scene = "res://scenes/main_game.tscn"
+
+[node name="Ground" type="StaticBody2D" parent="."]
+position = Vector2(0, 208)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Ground"]
+position = Vector2(384, 16)
+shape = SubResource("RectangleShape2D_interior_ground")
+
+[node name="GroundVisual" type="TextureRect" parent="Ground"]
+offset_right = 768.0
+offset_bottom = 32.0
+texture = SubResource("AtlasTexture_stone_floor")
+stretch_mode = 1
+
+[node name="Staircases" type="Node2D" parent="."]
+
+[node name="Staircase1" parent="Staircases" instance=ExtResource("5_stairs")]
+position = Vector2(340, 200)
+step_count = 4
+
+[node name="Platforms" type="Node2D" parent="."]
+
+[node name="InteriorPlatform" parent="Platforms" instance=ExtResource("6_platform")]
+position = Vector2(420, 152)
+
+[node name="Candles" type="Node2D" parent="."]
+
+[node name="Candle1" parent="Candles" instance=ExtResource("4_candle")]
+position = Vector2(100, 176)
+
+[node name="Candle2" parent="Candles" instance=ExtResource("4_candle")]
+position = Vector2(250, 176)
+
+[node name="CandlePlatform" parent="Candles" instance=ExtResource("4_candle")]
+position = Vector2(420, 136)
+
+[node name="Candle3" parent="Candles" instance=ExtResource("4_candle")]
+position = Vector2(580, 176)
+
+[node name="Candle4" parent="Candles" instance=ExtResource("4_candle")]
+position = Vector2(700, 176)
+
+[node name="BGMPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("9_music")
+autoplay = true
+
+[node name="Player" parent="." instance=ExtResource("7_player")]
+position = Vector2(60, 170)
+
+[node name="Camera2D" type="Camera2D" parent="Player"]
+position = Vector2(0, -30)
+zoom = Vector2(3, 3)
+limit_left = 0
+limit_top = 0
+limit_right = 768
+limit_bottom = 240
+position_smoothing_enabled = true

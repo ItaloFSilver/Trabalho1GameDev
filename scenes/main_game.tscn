@@ -1,36 +1,178 @@
 [gd_scene format=3 uid="uid://b7wrc6o32ofww"]
 
-[ext_resource type="Texture2D" uid="uid://bykahh02f3aoe" path="res://assets/fonts/Full-Background.png" id="1_s3esy"]
-[ext_resource type="PackedScene" uid="uid://bs7xchaii58py" path="res://scenes/player.tscn" id="2_72e8q"]
-[ext_resource type="Script" uid="uid://dyh8n57vt1wul" path="res://scripts/Hero/player.gd" id="3_0rdsr"]
-[ext_resource type="PackedScene" uid="uid://bnrilr5q1g7ao" path="res://scenes/platform.tscn" id="3_d2op2"]
-[ext_resource type="PackedScene" uid="uid://bh3kaurvd8n8c" path="res://scenes/bat.tscn" id="5_ipu61"]
+[ext_resource type="Texture2D" path="res://assets/environment/background.png" id="1_bg"]
+[ext_resource type="Texture2D" path="res://assets/environment/mountains.png" id="2_mtn"]
+[ext_resource type="Texture2D" path="res://assets/environment/graveyard.png" id="3_grave"]
+[ext_resource type="Texture2D" path="res://assets/environment/tileset.png" id="4_tiles"]
+[ext_resource type="PackedScene" uid="uid://bs7xchaii58py" path="res://scenes/player.tscn" id="5_player"]
+[ext_resource type="PackedScene" uid="uid://bnrilr5q1g7ao" path="res://scenes/platform.tscn" id="6_platform"]
+[ext_resource type="PackedScene" uid="uid://bh3kaurvd8n8c" path="res://scenes/bat.tscn" id="7_bat"]
+[ext_resource type="PackedScene" path="res://scenes/world/candle.tscn" id="8_candle"]
+[ext_resource type="PackedScene" path="res://scenes/world/staircase.tscn" id="9_stairs"]
+[ext_resource type="Texture2D" path="res://assets/environment/props/castle_gate_facade.png" id="10_castle"]
+[ext_resource type="PackedScene" path="res://scenes/world/door_transition.tscn" id="11_door"]
+[ext_resource type="Texture2D" path="res://assets/environment/props/tombstone_1.png" id="12_tomb1"]
+[ext_resource type="Texture2D" path="res://assets/environment/props/tombstone_2.png" id="13_tomb2"]
+[ext_resource type="Texture2D" path="res://assets/environment/props/tombstone_3.png" id="14_tomb3"]
+[ext_resource type="Texture2D" path="res://assets/environment/props/angel_statue.png" id="15_statue"]
+[ext_resource type="Texture2D" path="res://assets/environment/props/gothic_tree_1.png" id="16_tree1"]
+[ext_resource type="Texture2D" path="res://assets/environment/props/gothic_tree_2.png" id="17_tree2"]
+[ext_resource type="Texture2D" path="res://assets/environment/props/street_lamp.png" id="18_lamp"]
 
-[node name="MainGame" type="Node" unique_id=1854347214]
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_ground"]
+size = Vector2(1536, 32)
 
-[node name="Background" type="TextureRect" parent="." unique_id=759908965]
-offset_right = 3072.0
-offset_bottom = 1536.0
-scale = Vector2(0.44718862, 0.48817334)
-texture = ExtResource("1_s3esy")
+[sub_resource type="AtlasTexture" id="AtlasTexture_tile_floor"]
+atlas = ExtResource("4_tiles")
+region = Rect2(64, 48, 64, 48)
 
-[node name="Player" parent="." unique_id=665909704 instance=ExtResource("2_72e8q")]
-position = Vector2(305, 466)
-script = ExtResource("3_0rdsr")
-jump = 500.0
+[node name="MainGame" type="Node2D" unique_id=1854347214]
 
-[node name="platform" parent="." unique_id=1289757584 instance=ExtResource("3_d2op2")]
-position = Vector2(698, 400)
+[node name="ParallaxBackground" type="ParallaxBackground" parent="." unique_id=901001]
 
-[node name="platform2" parent="." unique_id=561577974 instance=ExtResource("3_d2op2")]
-position = Vector2(317, 531)
+[node name="LayerSky" type="ParallaxLayer" parent="ParallaxBackground" unique_id=901002]
+motion_scale = Vector2(0.1, 0.1)
+motion_mirroring = Vector2(384, 0)
 
-[node name="Camera2D" type="Camera2D" parent="." unique_id=650491825]
-scale = Vector2(-130.4795, 73.67025)
+[node name="SkySprite" type="Sprite2D" parent="ParallaxBackground/LayerSky" unique_id=901003]
+texture = ExtResource("1_bg")
+centered = false
+
+[node name="LayerMountains" type="ParallaxLayer" parent="ParallaxBackground" unique_id=901004]
+motion_scale = Vector2(0.25, 0.25)
+motion_mirroring = Vector2(384, 0)
+
+[node name="MountainsSprite" type="Sprite2D" parent="ParallaxBackground/LayerMountains" unique_id=901005]
+position = Vector2(0, 45)
+texture = ExtResource("2_mtn")
+centered = false
+
+[node name="MountainsSprite2" type="Sprite2D" parent="ParallaxBackground/LayerMountains" unique_id=901006]
+position = Vector2(192, 45)
+texture = ExtResource("2_mtn")
+centered = false
+
+[node name="LayerGraveyard" type="ParallaxLayer" parent="ParallaxBackground" unique_id=901007]
+motion_scale = Vector2(0.5, 0.5)
+motion_mirroring = Vector2(384, 0)
+
+[node name="GraveyardSprite" type="Sprite2D" parent="ParallaxBackground/LayerGraveyard" unique_id=901008]
+position = Vector2(0, 101)
+texture = ExtResource("3_grave")
+centered = false
+
+[node name="Ground" type="StaticBody2D" parent="." unique_id=801001]
+position = Vector2(0, 208)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Ground" unique_id=801002]
+position = Vector2(768, 16)
+shape = SubResource("RectangleShape2D_ground")
+
+[node name="GroundVisual" type="TextureRect" parent="Ground" unique_id=801003]
+offset_top = -14.0
+offset_right = 1536.0
+offset_bottom = 34.0
+texture = SubResource("AtlasTexture_tile_floor")
+stretch_mode = 1
+
+[node name="Staircases" type="Node2D" parent="."]
+
+[node name="Staircase1" parent="Staircases" instance=ExtResource("9_stairs")]
+position = Vector2(208, 200)
+step_count = 4
+
+[node name="Platforms" type="Node2D" parent="."]
+
+[node name="HighPlatform" parent="Platforms" instance=ExtResource("6_platform")]
+position = Vector2(288, 152)
+
+[node name="GraveyardProps" type="Node2D" parent="."]
+z_index = -1
+
+[node name="Tree1" type="Sprite2D" parent="GraveyardProps"]
+position = Vector2(0, 91)
+texture = ExtResource("16_tree1")
+centered = false
+
+[node name="Tomb1" type="Sprite2D" parent="GraveyardProps"]
+position = Vector2(90, 169)
+texture = ExtResource("12_tomb1")
+centered = false
+
+[node name="Tomb2" type="Sprite2D" parent="GraveyardProps"]
+position = Vector2(165, 168)
+texture = ExtResource("13_tomb2")
+centered = false
+
+[node name="AngelStatue" type="Sprite2D" parent="GraveyardProps"]
+position = Vector2(380, 133)
+texture = ExtResource("15_statue")
+centered = false
+
+[node name="Tomb3" type="Sprite2D" parent="GraveyardProps"]
+position = Vector2(430, 175)
+texture = ExtResource("14_tomb3")
+centered = false
+
+[node name="Tree2" type="Sprite2D" parent="GraveyardProps"]
+position = Vector2(520, 91)
+texture = ExtResource("17_tree2")
+centered = false
+
+[node name="Tomb4" type="Sprite2D" parent="GraveyardProps"]
+position = Vector2(590, 169)
+texture = ExtResource("12_tomb1")
+centered = false
+
+[node name="StreetLamp" type="Sprite2D" parent="GraveyardProps"]
+position = Vector2(680, 100)
+texture = ExtResource("18_lamp")
+centered = false
+
+[node name="Tomb5" type="Sprite2D" parent="GraveyardProps"]
+position = Vector2(750, 168)
+texture = ExtResource("13_tomb2")
+centered = false
+
+[node name="CastleEntrance" type="Node2D" parent="."]
+position = Vector2(850, -55)
+
+[node name="CastleGateFacade" type="Sprite2D" parent="CastleEntrance"]
+texture = ExtResource("10_castle")
+centered = false
+
+[node name="CastleDoorTransition" parent="." instance=ExtResource("11_door")]
+position = Vector2(1036, 184)
+target_scene = "res://scenes/castle_interior.tscn"
+
+[node name="Candles" type="Node2D" parent="."]
+
+[node name="CandleGround1" parent="Candles" instance=ExtResource("8_candle")]
+position = Vector2(130, 192)
+
+[node name="CandleOnPlatform" parent="Candles" instance=ExtResource("8_candle")]
+position = Vector2(288, 136)
+
+[node name="CandleGround2" parent="Candles" instance=ExtResource("8_candle")]
+position = Vector2(450, 192)
+
+[node name="CandleGround3" parent="Candles" instance=ExtResource("8_candle")]
+position = Vector2(630, 192)
+
+[node name="CandleGround4" parent="Candles" instance=ExtResource("8_candle")]
+position = Vector2(790, 192)
+
+[node name="Player" parent="." unique_id=665909704 instance=ExtResource("5_player")]
+position = Vector2(60, 170)
+
+[node name="Camera2D" type="Camera2D" parent="Player" unique_id=650491825]
+position = Vector2(0, -30)
+zoom = Vector2(3, 3)
 limit_left = 0
 limit_top = 0
-limit_right = 1375
-limit_bottom = 755
+limit_right = 1180
+limit_bottom = 240
+position_smoothing_enabled = true
 
-[node name="bat" parent="." unique_id=1317970611 instance=ExtResource("5_ipu61")]
-position = Vector2(208, 347)
+[node name="bat" parent="." unique_id=1317970611 instance=ExtResource("7_bat")]
+position = Vector2(208, 60)
