@@ -2,7 +2,7 @@ class_name IdleState
 extends State
 
 ## Referência tipada ao Player (assumindo que o nó raiz do Simon é um CharacterBody2D)
-@onready var player: CharacterBody2D = owner as CharacterBody2D
+@onready var player: Player = owner as Player
 
 
 func enter(_previous_state: String, _data := {}) -> void:
@@ -12,7 +12,7 @@ func enter(_previous_state: String, _data := {}) -> void:
 
 func _physics_update(delta: float) -> void:
 	
-  player.anim.play("idle")
+	player.anim.play("idle")
 	# 1. Aplicar gravidade básica para mantê-lo colado no chão
 	if not player.is_on_floor():
 		player.velocity += player.get_gravity() * delta

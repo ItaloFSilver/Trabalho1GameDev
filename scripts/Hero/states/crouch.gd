@@ -2,7 +2,7 @@
 class_name CrouchState
 extends State
 
-@onready var player: CharacterBody2D = owner as CharacterBody2D
+@onready var player: Player = owner as Player
 
 
 func enter(_previous_state: String, _data := {}) -> void:
@@ -14,11 +14,11 @@ func enter(_previous_state: String, _data := {}) -> void:
 
 func _physics_update(delta: float) -> void:
 	# Aplica a gravidade para garantir que permaneça colado ao chão
-	#if not player.is_on_floor():
-	#	player.velocity += player.get_gravity() * delta
-	#	player.move_and_slide()
-	#	finished.emit("Fall", {})
-	#	return
+	if not player.is_on_floor():
+		player.velocity += player.get_gravity() * delta
+		player.move_and_slide()
+		finished.emit("Fall", {})
+		return
 
 	player.move_and_slide()
 

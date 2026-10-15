@@ -24,7 +24,6 @@ func _process(_delta: float) -> void:
 	
 	pass
 
-# --- EVENTOS GLOBAIS ---
 
 func take_damage(amount: int, attacker_pos_x: float) -> void:
 	if is_invincible:

@@ -4,7 +4,7 @@ extends State
 ## Velocidade de caminhada horizontal do Simon (ajustável no Inspetor)
 @export var move_speed: float = 120.0
 
-@onready var player: CharacterBody2D = owner as CharacterBody2D
+@onready var player: Player = owner as Player
 
 
 func enter(_previous_state: String, _data := {}) -> void:

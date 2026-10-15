@@ -1,6 +1,6 @@
 class_name AttackState extends State
 
-@onready var player: CharacterBody2D = owner as CharacterBody2D
+@onready var player: Player = owner as Player
 
 
 func enter(_previous_state: String, _data := {}) -> void:
@@ -16,12 +16,8 @@ func enter(_previous_state: String, _data := {}) -> void:
 		anim_player.play("attack")
 
 func _physics_update(delta: float) -> void:
-	# Aplica a gravidade para garantir que permaneça colado ao chão
-	#if not player.is_on_floor():
-	#	player.velocity += player.get_gravity() * delta
-	#	player.move_and_slide()
-	#	finished.emit("Fall", {})
-	#	return
+	if not player.is_on_floor():
+		player.velocity += player.get_gravity() * delta
 
 	player.move_and_slide()
 	
@@ -29,10 +25,7 @@ func _physics_update(delta: float) -> void:
 func _on_animation_finished(anim_name: StringName) -> void:
 	# Garante que só reage se a animação finalizada for a de ataque
 	if anim_name == "attack":
-		#if not player.is_on_floor():
-			#finished.emit("Fall", {})
-		#else:
-			finished.emit("Idle", {})
+		finished.emit("Idle", {})
 
 
 func exit() -> void:

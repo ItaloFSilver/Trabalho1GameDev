@@ -2,7 +2,7 @@
 class_name FallState
 extends State
 
-@onready var player: CharacterBody2D = owner as CharacterBody2D
+@onready var player: Player = owner as Player
 
 
 func enter(_previous_state: String, _data := {}) -> void:
