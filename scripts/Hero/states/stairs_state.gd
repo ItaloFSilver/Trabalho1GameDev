@@ -12,7 +12,7 @@ func enter(_previous_state: String, data := {}) -> void:
 	
 	if data.has("direction"):
 		stair_direction = data["direction"]
-	player.global_position.x = player.current_stair_snap_x
+	#player.global_position.x = player.current_stair_snap_x
 	
 	if player.anim:
 		player.anim.play("climbing_up") # ou down, dependendo do input
