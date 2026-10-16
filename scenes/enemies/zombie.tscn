@@ -1,0 +1,76 @@
+[gd_scene format=3 uid="uid://b7w0ts3qe1c71"]
+
+[ext_resource type="Script" uid="uid://v0o2at6qn50t" path="res://scripts/Enemies/zombie.gd" id="1_3pt6v"]
+[ext_resource type="Texture2D" uid="uid://cybbi82lf07kr" path="res://assets/sprites/enemies/ghost/ghost_2.png" id="2_bgxja"]
+[ext_resource type="Texture2D" uid="uid://bxkc3cyt43sgs" path="res://assets/sprites/enemies/ghost/ghost_1.png" id="2_gl10n"]
+[ext_resource type="Texture2D" uid="uid://cpqpb8use747v" path="res://assets/sprites/enemies/ghost/ghost_3.png" id="4_irn3l"]
+[ext_resource type="Texture2D" uid="uid://b5jnqh78qhqof" path="res://assets/sprites/enemies/ghost/ghost_4.png" id="5_p4ex4"]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_m3wds"]
+radius = 8.0
+height = 42.0
+
+[sub_resource type="Animation" id="Animation_7s1wu"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:texture")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [ExtResource("2_bgxja")]
+}
+
+[sub_resource type="Animation" id="Animation_rdvt3"]
+resource_name = "walk"
+length = 0.8
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:texture")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.2, 0.4, 0.6),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 1,
+"values": [ExtResource("2_gl10n"), ExtResource("2_bgxja"), ExtResource("4_irn3l"), ExtResource("5_p4ex4")]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_a0lpg"]
+_data = {
+&"RESET": SubResource("Animation_7s1wu"),
+&"walk": SubResource("Animation_rdvt3")
+}
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_ipiyd"]
+height = 40.0
+
+[node name="Zombie" type="CharacterBody2D" unique_id=276199770 groups=["zombies"]]
+collision_layer = 4
+script = ExtResource("1_3pt6v")
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=442219758]
+texture = ExtResource("2_bgxja")
+flip_h = true
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=13164548]
+position = Vector2(-1, 4)
+shape = SubResource("CapsuleShape2D_m3wds")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=2018521485]
+libraries/ = SubResource("AnimationLibrary_a0lpg")
+
+[node name="Hitbox" type="Area2D" parent="." unique_id=474000597]
+collision_layer = 0
+collision_mask = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Hitbox" unique_id=1091642729]
+shape = SubResource("CapsuleShape2D_ipiyd")
+
+[connection signal="body_entered" from="Hitbox" to="." method="_on_hitbox_body_entered"]

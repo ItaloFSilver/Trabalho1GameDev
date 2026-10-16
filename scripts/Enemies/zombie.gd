@@ -1,0 +1,43 @@
+class_name Zombie
+extends CharacterBody2D
+
+@export var speed: float = 40.0
+@export var gravity: float = 900.0
+
+var direction: float = -1.0 
+@onready var sprite: Sprite2D = $Sprite2D
+@onready var anim: AnimationPlayer = $AnimationPlayer
+
+func _ready() -> void:
+	if anim:
+		anim.play("walk")
+
+# CORREÇÃO 1: Usar a função nativa de física da Godot
+func _physics_process(delta: float) -> void:
+	if not is_on_floor():
+		velocity.y += gravity * delta
+	
+	velocity.x = speed * direction
+	
+	if sprite:
+		sprite.flip_h = (direction < 0)
+		
+	move_and_slide()
+
+func take_damage(_amount: int) -> void:
+	die_or_exit_screen()
+	
+func reset_state() -> void:
+	if anim:
+		anim.play("walk")
+
+func die_or_exit_screen() -> void:
+	var pool = get_parent() as ObjectPool
+	if pool:
+		pool.return_to_pool(self)
+
+
+func _on_hitbox_body_entered(body: CharacterBody2D) -> void:
+	if body is Player:
+		body.take_damage(1, global_position.x)
+	pass # Replace with function body.

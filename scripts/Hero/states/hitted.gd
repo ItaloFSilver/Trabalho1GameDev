@@ -8,6 +8,7 @@ extends State
 func enter(_previous_state: String, _data := {}) -> void: 
 	if player.anim:
 		player.anim.play("hitted") 
+		print("Argh")
 
 	var knockback_direction: float = -1.0 
 	

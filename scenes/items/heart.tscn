@@ -1,16 +1,17 @@
-[gd_scene format=3 uid="uid://itemheart0001"]
+[gd_scene format=3 uid="uid://3kvbagapmaii"]
 
-[ext_resource type="Script" path="res://scripts/items/heart.gd" id="1_script"]
-[ext_resource type="Texture2D" path="res://assets/sprites/items/heart.png" id="2_tex"]
+[ext_resource type="Script" uid="uid://c4ssm8lupomjj" path="res://scripts/items/heart.gd" id="1_script"]
+[ext_resource type="Texture2D" uid="uid://crvhwoqwqqwlx" path="res://assets/sprites/items/heart.png" id="2_tex"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_heart"]
 radius = 6.0
 
-[node name="Heart" type="Area2D"]
+[node name="Heart" type="Area2D" unique_id=195463008]
+collision_mask = 2
 script = ExtResource("1_script")
 
-[node name="Sprite2D" type="Sprite2D" parent="."]
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=27404708]
 texture = ExtResource("2_tex")
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=156068464]
 shape = SubResource("CircleShape2D_heart")

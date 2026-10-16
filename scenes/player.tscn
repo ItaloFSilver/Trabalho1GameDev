@@ -51,7 +51,7 @@ tracks/1/keys = {
 tracks/2/type = "value"
 tracks/2/imported = false
 tracks/2/enabled = true
-tracks/2/path = NodePath("weapon:shape")
+tracks/2/path = NodePath("weaponArea/weapon:shape")
 tracks/2/interp = 1
 tracks/2/loop_wrap = true
 tracks/2/keys = {
@@ -63,7 +63,7 @@ tracks/2/keys = {
 tracks/3/type = "value"
 tracks/3/imported = false
 tracks/3/enabled = true
-tracks/3/path = NodePath("weapon:position")
+tracks/3/path = NodePath("weaponArea/weapon:position")
 tracks/3/interp = 1
 tracks/3/loop_wrap = true
 tracks/3/keys = {
@@ -75,7 +75,7 @@ tracks/3/keys = {
 tracks/4/type = "value"
 tracks/4/imported = false
 tracks/4/enabled = true
-tracks/4/path = NodePath("weapon:disabled")
+tracks/4/path = NodePath("weaponArea/weapon:disabled")
 tracks/4/interp = 1
 tracks/4/loop_wrap = true
 tracks/4/keys = {
@@ -115,7 +115,7 @@ tracks/1/keys = {
 tracks/2/type = "value"
 tracks/2/imported = false
 tracks/2/enabled = true
-tracks/2/path = NodePath("weapon:shape")
+tracks/2/path = NodePath("weaponArea/weapon:shape")
 tracks/2/interp = 1
 tracks/2/loop_wrap = true
 tracks/2/keys = {
@@ -127,7 +127,7 @@ tracks/2/keys = {
 tracks/3/type = "value"
 tracks/3/imported = false
 tracks/3/enabled = true
-tracks/3/path = NodePath("weapon:position")
+tracks/3/path = NodePath("weaponArea/weapon:position")
 tracks/3/interp = 1
 tracks/3/loop_wrap = true
 tracks/3/keys = {
@@ -139,7 +139,7 @@ tracks/3/keys = {
 tracks/4/type = "value"
 tracks/4/imported = false
 tracks/4/enabled = true
-tracks/4/path = NodePath("weapon:disabled")
+tracks/4/path = NodePath("weaponArea/weapon:disabled")
 tracks/4/interp = 1
 tracks/4/loop_wrap = true
 tracks/4/keys = {
@@ -160,6 +160,9 @@ tracks/5/keys = {
 "update": 1,
 "values": [ExtResource("2_3v2ag")]
 }
+
+[sub_resource type="Animation" id="Animation_60mlk"]
+resource_name = "climbing_up"
 
 [sub_resource type="Animation" id="Animation_3v2ag"]
 resource_name = "crouch"
@@ -227,7 +230,7 @@ tracks/4/keys = {
 tracks/5/type = "value"
 tracks/5/imported = false
 tracks/5/enabled = true
-tracks/5/path = NodePath("weapon:disabled")
+tracks/5/path = NodePath("weaponArea/weapon:disabled")
 tracks/5/interp = 1
 tracks/5/loop_wrap = true
 tracks/5/keys = {
@@ -293,7 +296,7 @@ tracks/0/keys = {
 tracks/1/type = "value"
 tracks/1/imported = false
 tracks/1/enabled = true
-tracks/1/path = NodePath("weapon:disabled")
+tracks/1/path = NodePath("weaponArea/weapon:disabled")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
@@ -511,6 +514,7 @@ tracks/4/keys = {
 _data = {
 &"RESET": SubResource("Animation_fjrip"),
 &"attack": SubResource("Animation_d2wvv"),
+&"climbing_up": SubResource("Animation_60mlk"),
 &"crouch": SubResource("Animation_3v2ag"),
 &"dead": SubResource("Animation_qfm1y"),
 &"hitted": SubResource("Animation_oprun"),
@@ -524,13 +528,13 @@ radius = 13.0
 height = 44.0
 
 [node name="Player" type="CharacterBody2D" unique_id=55681833]
+collision_layer = 2
 script = ExtResource("1_fulsm")
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=1210682791]
 libraries/ = SubResource("AnimationLibrary_ur7pv")
 
 [node name="Sprite2D" type="Sprite2D" parent="." unique_id=1399851156]
-position = Vector2(-1, 3)
 texture = ExtResource("1_tuyoq")
 hframes = 4
 
@@ -538,7 +542,11 @@ hframes = 4
 position = Vector2(0, 22)
 shape = SubResource("CapsuleShape2D_m3wds")
 
-[node name="weapon" type="CollisionShape2D" parent="." unique_id=574957520]
+[node name="weaponArea" type="Area2D" parent="." unique_id=1134792833]
+collision_layer = 2
+collision_mask = 5
+
+[node name="weapon" type="CollisionShape2D" parent="weaponArea" unique_id=574957520]
 position = Vector2(28.5, 18)
 shape = SubResource("RectangleShape2D_m3wds")
 
@@ -569,5 +577,7 @@ script = ExtResource("13_jej6c")
 [node name="Dead" type="Node" parent="State_Machine" unique_id=2009708569]
 script = ExtResource("15_oprun")
 
-[node name="StairsState" type="Node" parent="State_Machine" unique_id=529428622]
+[node name="Stairs" type="Node" parent="State_Machine" unique_id=529428622]
 script = ExtResource("17_qfm1y")
+
+[connection signal="body_entered" from="weaponArea" to="." method="_on_weapon_area_body_entered"]

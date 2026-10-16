@@ -63,5 +63,27 @@ func _rebuild_stairs() -> void:
 	var top_y = -(step_count - 1) * step_size.y
 	t_entry.position = Vector2(top_x, top_y)
 	t_entry.set_meta("is_top_entry", true)
-	t_entry.set_meta("climb_vector", Vector2(-climb_direction_x, 1))
+	t_entry.set_meta("climb_vector", Vector2(climb_direction_x, -1))
 	t_entry.set_meta("snap_x", global_position.x + top_x)
+
+
+func _on_bottom_entry_body_entered(body: Node2D) -> void:
+	if body is Player:
+		var dir: Vector2 = bottom_entry.get_meta("climb_vector")
+		var snap: float = bottom_entry.get_meta("snap_x")
+		body.enter_stair_zone(dir, snap) # Atualizaremos o player.gd para receber o snap!
+
+func _on_bottom_entry_body_exited(body: Node2D) -> void:
+	if body is Player:
+		body.exit_stair_zone()
+
+# Lembre-se de conectar estes sinais no painel lateral (Node -> Signals) do TopEntry também!
+func _on_top_entry_body_entered(body: Node2D) -> void:
+	if body is Player:
+		var dir: Vector2 = top_entry.get_meta("climb_vector")
+		var snap: float = top_entry.get_meta("snap_x")
+		body.enter_stair_zone(dir, snap)
+
+func _on_top_entry_body_exited(body: Node2D) -> void:
+	if body is Player:
+		body.exit_stair_zone()
