@@ -21,6 +21,9 @@ extends Node2D
 @onready var steps_visual: Node2D = $StepsVisual
 @onready var bottom_entry: Area2D = $BottomEntry
 @onready var top_entry: Area2D = $TopEntry
+var is_on_stairs: bool = false
+var bottom_entered: bool = false
+var top_entered: bool = false
 
 func _ready() -> void:
 	_rebuild_stairs()
@@ -71,19 +74,33 @@ func _on_bottom_entry_body_entered(body: Node2D) -> void:
 	if body is Player:
 		var dir: Vector2 = bottom_entry.get_meta("climb_vector")
 		var snap: float = bottom_entry.get_meta("snap_x")
+		bottom_entered = true
+		if top_entered:
+			top_entered = false
+			body.exit_stair_zone()
+			bottom_entered = false
+			return
 		body.enter_stair_zone(dir, snap) # Atualizaremos o player.gd para receber o snap!
 
 func _on_bottom_entry_body_exited(body: Node2D) -> void:
 	if body is Player:
-		body.exit_stair_zone()
+		print("subindo")
 
 # Lembre-se de conectar estes sinais no painel lateral (Node -> Signals) do TopEntry também!
 func _on_top_entry_body_entered(body: Node2D) -> void:
+	print("chegou")
 	if body is Player:
 		var dir: Vector2 = top_entry.get_meta("climb_vector")
 		var snap: float = top_entry.get_meta("snap_x")
+		top_entered = true
+		if bottom_entered:
+			top_entered = false
+			body.exit_stair_zone()
+			bottom_entered = false
+			return
 		body.enter_stair_zone(dir, snap)
+		
 
 func _on_top_entry_body_exited(body: Node2D) -> void:
 	if body is Player:
-		body.exit_stair_zone()
+		print("desceu")

@@ -15,7 +15,7 @@ var is_invincible := false
 @export var invincibility_duration := 1.5 # Segundos piscando após tomar dano
 
 @onready var anim: AnimationPlayer = $AnimationPlayer 
-@onready var sprite: Sprite2D = $Sprite2D
+@onready var sprite: Sprite2D = $Pivot/Sprite2D
 @onready var state_machine = $State_Machine # Ajuste para o nome do nó da sua máquina de estados
 
 func _ready() -> void:

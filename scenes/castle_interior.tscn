@@ -27,7 +27,7 @@ region = Rect2(128.68692, 167.70099, 46.85692, 32)
 [node name="CastleInterior" type="Node2D" unique_id=283037784]
 
 [node name="ColorRectDark" type="ColorRect" parent="." unique_id=1162345239]
-offset_right = 768.0
+offset_right = 1068.0
 offset_bottom = 240.0
 color = Color(0.07, 0.05, 0.12, 1)
 
@@ -42,6 +42,14 @@ centered = false
 position = Vector2(624, 16)
 texture = ExtResource("1_bg")
 centered = false
+hframes = 4
+
+[node name="Bg3" type="Sprite2D" parent="BackgroundSprites" unique_id=1416696967]
+position = Vector2(772, 16)
+texture = ExtResource("1_bg")
+centered = false
+hframes = 4
+frame = 2
 
 [node name="Columns" type="Node2D" parent="." unique_id=1887448890]
 
@@ -56,7 +64,8 @@ texture = ExtResource("3_column")
 centered = false
 
 [node name="EntranceDoorVisual" type="Sprite2D" parent="." unique_id=1945224092]
-position = Vector2(35, 161)
+position = Vector2(-1.7499974, 191)
+scale = Vector2(1.4071429, 0.9361702)
 texture = SubResource("AtlasTexture_castle_arch")
 
 [node name="ReturnDoor" parent="." unique_id=692720108 instance=ExtResource("8_door")]
@@ -124,10 +133,10 @@ position = Vector2(124, 58)
 script = ExtResource("10_h172o")
 
 [node name="SpawnLeft" type="Marker2D" parent="Player/Camera2D/ZombieSpawner" unique_id=9411450]
-position = Vector2(-364, 17)
+position = Vector2(-303, 8)
 
 [node name="SpawnRight" type="Marker2D" parent="Player/Camera2D/ZombieSpawner" unique_id=1435224252]
-position = Vector2(329, 1)
+position = Vector2(381, 0)
 
 [node name="ObjectPool" type="Node" parent="Player/Camera2D/ZombieSpawner" unique_id=1715706625]
 script = ExtResource("11_tvbop")
