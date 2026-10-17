@@ -26,6 +26,12 @@ func _physics_process(delta: float) -> void:
 	move_and_slide()
 
 func take_damage(_amount: int) -> void:
+	var actualSpeed = speed
+	speed = 0
+	if anim: 
+		anim.play("death")
+		await anim.animation_finished
+	speed = actualSpeed
 	die_or_exit_screen()
 	
 func reset_state() -> void:
