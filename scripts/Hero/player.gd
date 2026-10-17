@@ -7,9 +7,11 @@ extends CharacterBody2D
 var is_near_stairs := false
 var current_stair_direction := Vector2.ZERO
 var current_stair_snap_x := 0.0
+var current_stair_is_top := false
+var current_stair_snap_y := 0.0
 
 @export var max_health: int = 16 # Castlevania clássico usa 16 pontos/barras
-var current_health: int
+@export var current_health: int
 @export var damage: int = 1 # Dano do chicote
 var is_invincible := false
 @export var invincibility_duration := 1.5 # Segundos piscando após tomar dano
@@ -56,11 +58,13 @@ func start_invincibility() -> void:
 		sprite.modulate.a = 1.0
 		
 
-func enter_stair_zone(stair_direction: Vector2, snap_x: float) -> void:
+func enter_stair_zone(stair_direction: Vector2, snap_x: float, snap_y: float, is_top: bool) -> void:
 	is_near_stairs = true
 	current_stair_direction = stair_direction
 	current_stair_snap_x = snap_x
-
+	current_stair_snap_y = snap_y 
+	current_stair_is_top = is_top
+	
 func exit_stair_zone() -> void:
 	is_near_stairs = false
 	current_stair_direction = Vector2.ZERO
