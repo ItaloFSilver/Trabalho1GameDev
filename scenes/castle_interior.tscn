@@ -34,32 +34,68 @@ color = Color(0.07, 0.05, 0.12, 1)
 [node name="BackgroundSprites" type="Node2D" parent="." unique_id=1198086112]
 
 [node name="Bg1" type="Sprite2D" parent="BackgroundSprites" unique_id=1575270036]
-position = Vector2(0, 16)
+position = Vector2(0, 1)
+scale = Vector2(1.13125, 1.078125)
 texture = ExtResource("1_bg")
 centered = false
+region_enabled = true
+region_rect = Rect2(0, 0, 160, 192)
 
 [node name="Bg2" type="Sprite2D" parent="BackgroundSprites" unique_id=1592419726]
-position = Vector2(624, 16)
+position = Vector2(524, -1)
+scale = Vector2(1.1625, 1.0885416)
 texture = ExtResource("1_bg")
 centered = false
-hframes = 4
+region_enabled = true
+region_rect = Rect2(0, 0, 160, 192)
 
-[node name="Bg3" type="Sprite2D" parent="BackgroundSprites" unique_id=1416696967]
-position = Vector2(772, 16)
+[node name="Bg3" type="Sprite2D" parent="BackgroundSprites" unique_id=799707034]
+position = Vector2(693, -1)
+scale = Vector2(1.1625, 1.0885416)
 texture = ExtResource("1_bg")
 centered = false
-hframes = 4
-frame = 2
+region_enabled = true
+region_rect = Rect2(0, 0, 160, 192)
+
+[node name="Bg4" type="Sprite2D" parent="BackgroundSprites" unique_id=9096748]
+position = Vector2(365, 1)
+scale = Vector2(1.13125, 1.078125)
+texture = ExtResource("1_bg")
+centered = false
+region_enabled = true
+region_rect = Rect2(320, 0, 128, 192)
+
+[node name="Bg5" type="Sprite2D" parent="BackgroundSprites" unique_id=2090993394]
+position = Vector2(177, 1)
+scale = Vector2(1.13125, 1.078125)
+texture = ExtResource("1_bg")
+centered = false
+region_enabled = true
+region_rect = Rect2(0, 0, 160, 192)
 
 [node name="Columns" type="Node2D" parent="." unique_id=1887448890]
 
 [node name="Column1" type="Sprite2D" parent="Columns" unique_id=162106049]
-position = Vector2(170, 18)
+position = Vector2(97, 1)
+scale = Vector2(1.1754386, 1.0894737)
 texture = ExtResource("3_column")
 centered = false
 
 [node name="Column2" type="Sprite2D" parent="Columns" unique_id=728085475]
-position = Vector2(480, 18)
+position = Vector2(451, 1)
+scale = Vector2(1.1140351, 1.0894737)
+texture = ExtResource("3_column")
+centered = false
+
+[node name="Column3" type="Sprite2D" parent="Columns" unique_id=406962987]
+position = Vector2(273, 1)
+scale = Vector2(1.1754386, 1.0894737)
+texture = ExtResource("3_column")
+centered = false
+
+[node name="Column4" type="Sprite2D" parent="Columns" unique_id=1974289810]
+position = Vector2(621, 1)
+scale = Vector2(1.1754386, 1.0894737)
 texture = ExtResource("3_column")
 centered = false
 
