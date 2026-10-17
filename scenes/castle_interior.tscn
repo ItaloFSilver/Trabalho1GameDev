@@ -160,7 +160,7 @@ position = Vector2(0, -30)
 zoom = Vector2(3, 3)
 limit_left = 0
 limit_top = 0
-limit_right = 768
+limit_right = 878
 limit_bottom = 240
 position_smoothing_enabled = true
 
@@ -183,5 +183,9 @@ metadata/_custom_type_script = "uid://dgbp25xdiog0w"
 
 [node name="Timer" type="Timer" parent="ZombieSpawner" unique_id=1466203110]
 autostart = true
+
+[node name="DoorTransition" parent="." unique_id=1835830736 instance=ExtResource("8_door")]
+position = Vector2(860, 179)
+target_scene = "uid://drtiqhdfykke8"
 
 [connection signal="timeout" from="ZombieSpawner/Timer" to="ZombieSpawner" method="_on_timer_timeout"]
