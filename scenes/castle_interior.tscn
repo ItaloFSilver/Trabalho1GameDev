@@ -128,22 +128,24 @@ limit_right = 768
 limit_bottom = 240
 position_smoothing_enabled = true
 
-[node name="ZombieSpawner" type="Node2D" parent="Player/Camera2D" unique_id=57900944]
-position = Vector2(124, 58)
+[node name="ZombieSpawner" type="Node2D" parent="." unique_id=57900944 node_paths=PackedStringArray("camera")]
+position = Vector2(184, 198)
 script = ExtResource("10_h172o")
+camera = NodePath("../Player/Camera2D")
 
-[node name="SpawnLeft" type="Marker2D" parent="Player/Camera2D/ZombieSpawner" unique_id=9411450]
+[node name="SpawnLeft" type="Marker2D" parent="ZombieSpawner" unique_id=9411450]
 position = Vector2(-303, 8)
 
-[node name="SpawnRight" type="Marker2D" parent="Player/Camera2D/ZombieSpawner" unique_id=1435224252]
+[node name="SpawnRight" type="Marker2D" parent="ZombieSpawner" unique_id=1435224252]
 position = Vector2(381, 0)
 
-[node name="ObjectPool" type="Node" parent="Player/Camera2D/ZombieSpawner" unique_id=1715706625]
+[node name="ObjectPool" type="Node" parent="ZombieSpawner" unique_id=1715706625]
 script = ExtResource("11_tvbop")
 object_scene = ExtResource("12_rr3l1")
+pool_size = 2
 metadata/_custom_type_script = "uid://dgbp25xdiog0w"
 
-[node name="Timer" type="Timer" parent="Player/Camera2D/ZombieSpawner" unique_id=1466203110]
+[node name="Timer" type="Timer" parent="ZombieSpawner" unique_id=1466203110]
 autostart = true
 
-[connection signal="timeout" from="Player/Camera2D/ZombieSpawner/Timer" to="Player/Camera2D/ZombieSpawner" method="_on_timer_timeout"]
+[connection signal="timeout" from="ZombieSpawner/Timer" to="ZombieSpawner" method="_on_timer_timeout"]

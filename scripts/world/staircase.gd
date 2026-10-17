@@ -84,7 +84,7 @@ func _on_bottom_entry_body_entered(body: Node2D) -> void:
 
 func _on_bottom_entry_body_exited(body: Node2D) -> void:
 	if body is Player:
-		print("subindo")
+		pass
 
 # Lembre-se de conectar estes sinais no painel lateral (Node -> Signals) do TopEntry também!
 func _on_top_entry_body_entered(body: Node2D) -> void:

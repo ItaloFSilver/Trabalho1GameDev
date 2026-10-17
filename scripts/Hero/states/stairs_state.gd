@@ -40,7 +40,8 @@ func _physics_update(_delta: float) -> void:
 	player.move_and_slide() 
 
 	if Input.is_action_just_pressed("attack"): 
-		finished.emit("Attack", {"on_stairs": true, "direction": stair_direction}) 
+		player.exit_stair_zone()
+		finished.emit("Attack", {}) 
 		return
 
 	if player.is_on_floor() and input_y > 0:

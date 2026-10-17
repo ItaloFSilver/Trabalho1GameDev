@@ -3,6 +3,7 @@ extends CharacterBody2D
 
 @export var speed: float = 40.0
 @export var gravity: float = 900.0
+var has_entered_screen: bool = false
 
 var direction: float = -1.0 
 @onready var sprite: Sprite2D = $Sprite2D
@@ -41,3 +42,12 @@ func _on_hitbox_body_entered(body: CharacterBody2D) -> void:
 	if body is Player:
 		body.take_damage(1, global_position.x)
 	pass # Replace with function body.
+	
+func _on_visible_on_screen_notifier_2d_screen_entered() -> void:
+	has_entered_screen = true # Confirma que o zumbi já ficou visível para o jogador
+
+# SINAL 2: Conecte o screen_exited do VisibleOnScreenNotifier2D aqui
+func _on_visible_on_screen_notifier_2d_screen_exited() -> void:
+	# Só devolve para a pool se ele já esteve na tela antes
+	if has_entered_screen:
+		die_or_exit_screen()

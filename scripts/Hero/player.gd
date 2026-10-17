@@ -67,7 +67,7 @@ func exit_stair_zone() -> void:
 
 func die() -> void:
 	if state_machine:
-		state_machine.transition_to("Dead") 
+		state_machine._transition_to_next_state("Dead") 
 
 
 func _on_castle_door_transition_body_entered(body: Node2D) -> void:
