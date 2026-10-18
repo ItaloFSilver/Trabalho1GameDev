@@ -38,7 +38,8 @@ func take_damage(amount: int) -> void:
 	if current_hp <= 0:
 		anim.play("die")
 		await anim.animation_finished
-		pass
+		await get_tree().create_timer(1.0).timeout
+		get_tree().change_scene_to_file("res://scenes/vitoria.tscn")
 
 func _on_visible_on_screen_notifier_2d_screen_entered() -> void:
 	is_active = true
