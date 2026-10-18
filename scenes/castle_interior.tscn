@@ -125,11 +125,16 @@ stretch_mode = 1
 
 [node name="Staircase1" parent="Staircases" unique_id=960731036 instance=ExtResource("5_stairs")]
 position = Vector2(340, 200)
+step_count = 5
+
+[node name="Staircase" parent="Staircases" unique_id=315915156 instance=ExtResource("5_stairs")]
+position = Vector2(160, 201)
+step_count = 5
 
 [node name="Platforms" type="Node2D" parent="." unique_id=526414905]
 
 [node name="InteriorPlatform" parent="Platforms" unique_id=1290499845 instance=ExtResource("6_platform")]
-position = Vector2(420, 152)
+position = Vector2(445, 134)
 
 [node name="Candles" type="Node2D" parent="." unique_id=2067281148]
 

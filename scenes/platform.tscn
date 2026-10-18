@@ -1,14 +1,24 @@
 [gd_scene format=3 uid="uid://bnrilr5q1g7ao"]
 
-[ext_resource type="Texture2D" uid="uid://bqjbw56lkppsk" path="res://assets/environment/platform_stone.png" id="1_tex"]
+[ext_resource type="Texture2D" uid="uid://d2wck81xkf4lm" path="res://assets/environment/tilesets/castle_church_tileset.png" id="1_tileset"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_platform_stone"]
+atlas = ExtResource("1_tileset")
+region = Rect2(129, 168, 46, 16)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_platform"]
 size = Vector2(64, 16)
 
 [node name="Platform" type="StaticBody2D" unique_id=1526276471]
 
-[node name="Sprite2D" type="Sprite2D" parent="." unique_id=598141700]
-texture = ExtResource("1_tex")
+[node name="Visual" type="TextureRect" parent="."]
+offset_left = -32.0
+offset_top = -8.0
+offset_right = 32.0
+offset_bottom = 8.0
+mouse_filter = 2
+texture = SubResource("AtlasTexture_platform_stone")
+stretch_mode = 1
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1210848575]
 shape = SubResource("RectangleShape2D_platform")
