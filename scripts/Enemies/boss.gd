@@ -6,6 +6,8 @@ signal boss_defeated
 
 @export var max_hp: int = 16
 @export var waypoint_nodes: Array[Marker2D]
+@export var player: Player 
+@onready var fireball_pool = $FireBallPool 
 
 var current_hp: int
 var waypoints: Array[Vector2] = []
@@ -26,6 +28,8 @@ func take_damage(amount: int) -> void:
 	hp_changed.emit(current_hp, max_hp)
 	
 	if current_hp <= 0:
+		anim.play("die")
+		await anim.animation_finished
 		pass
 
 func _on_visible_on_screen_notifier_2d_screen_entered() -> void:

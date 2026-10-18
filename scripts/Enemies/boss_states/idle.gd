@@ -10,5 +10,7 @@ func enter(_previous_state: String, _data := {}) -> void:
 		parent.anim.play("idle")
 
 func _physics_update(_delta: float) -> void:
+	if parent.current_hp <= 0:
+		finished.emit("Die", {})
 	if parent.is_active:
 		finished.emit("Move", {})
