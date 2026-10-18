@@ -85,7 +85,8 @@ func exit_stair_zone() -> void:
 func die() -> void:
 	if state_machine:
 		state_machine._transition_to_next_state("Dead")
-		await get_tree().create_timer(2.0).timeout
+		await get_tree().create_timer(1.0).timeout
+		current_health = max_health
 		get_tree().change_scene_to_file("res://scenes/game_over.tscn")
 
 func _on_castle_door_transition_body_entered(body: Node2D) -> void:
