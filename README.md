@@ -65,6 +65,17 @@ O objetivo deste projeto é recriar fielmente a jogabilidade, visual retro e din
 
 ---
 
+## 📜 Referências
+
+Este jogo foi desenvolvido como um projeto acadêmico e ganhou vida graças ao uso de ferramentas open-source e recursos disponibilizados por artistas da comunidade. 
+
+Gostaria de deixar os devidos créditos e agradecimentos:
+
+* **Ansimuz:** Agradecimento especial pelos pacotes de pixel art, cenários e banners de interface utilizados no jogo.
+  * **Apoie o trabalho do criador:** [Patreon do Ansimuz](https://www.patreon.com/cw/ansimuz)
+  * **Link dos Assets:** [Assets Gothicvania](https://amiten.itch.io/gothicvania)
+
+---
 ## 📁 Estrutura do Projeto
 
 ```text
