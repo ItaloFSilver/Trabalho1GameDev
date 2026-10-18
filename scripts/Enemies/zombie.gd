@@ -31,7 +31,7 @@ func take_damage(_amount: int) -> void:
 	if anim: 
 		anim.play("death")
 		await anim.animation_finished
-	speed = actualSpeed
+	speed = 40.0
 	die_or_exit_screen()
 	
 func reset_state() -> void:

@@ -83,5 +83,5 @@ func _on_castle_door_transition_body_exited(body: Node2D) -> void:
 
 
 func _on_weapon_area_body_entered(body: CharacterBody2D) -> void:
-	body.take_damage(2)
+	body.take_damage(16)
 	pass # Replace with function body.

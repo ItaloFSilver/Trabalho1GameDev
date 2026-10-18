@@ -1,16 +1,36 @@
+class_name Boss
 extends CharacterBody2D
 
+signal hp_changed(current: int, max_hp: int)
+signal boss_defeated
 
-const SPEED = 300.0
-const JUMP_VELOCITY = -400.0
-var anim:AnimationPlayer
+@export var max_hp: int = 16
+@export var waypoint_nodes: Array[Marker2D]
+@export var player: Player 
+@onready var fireball_pool = $FireBallPool 
 
-func _ready()-> void:
-	anim = $AnimationPlayer
-	anim.play("idle")
+var current_hp: int
+var waypoints: Array[Vector2] = []
+var is_active := false
 
-func _physics_process(delta: float) -> void:
-	pass
+@onready var anim: AnimationPlayer = $AnimationPlayer
+@onready var sprite: Sprite2D = $Sprite2D
 
-func take_damage(dmg: float) -> void:
-	pass
+func _ready() -> void:
+	current_hp = max_hp
+	
+	for marker in waypoint_nodes:
+		if marker != null:
+			waypoints.append(marker.global_position)
+
+func take_damage(amount: int) -> void:
+	current_hp -= amount
+	hp_changed.emit(current_hp, max_hp)
+	
+	if current_hp <= 0:
+		anim.play("die")
+		await anim.animation_finished
+		pass
+
+func _on_visible_on_screen_notifier_2d_screen_entered() -> void:
+	is_active = true
