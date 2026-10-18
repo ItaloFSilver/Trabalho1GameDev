@@ -1,6 +1,8 @@
 class_name Player 
 extends CharacterBody2D
 
+signal hp_changed(current: int, max_hp: int)
+
 @export var speed: float = 100.0
 @export var jump: float = -300.0
 @export var gravity: float = 900.0
@@ -33,7 +35,7 @@ func take_damage(amount: int, attacker_pos_x: float) -> void:
 		return
 		
 	current_health -= amount
-	
+	hp_changed.emit(current_health, max_health)
 	if current_health <= 0:
 		die()
 		return
