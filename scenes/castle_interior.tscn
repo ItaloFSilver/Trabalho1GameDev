@@ -12,7 +12,6 @@
 [ext_resource type="Script" uid="uid://dgbp25xdiog0w" path="res://scripts/ObjectPool.gd" id="11_tvbop"]
 [ext_resource type="PackedScene" uid="uid://cx3kr0mtxls1p" path="res://scenes/world/hud.tscn" id="12_kpxow"]
 [ext_resource type="PackedScene" uid="uid://b7w0ts3qe1c71" path="res://scenes/enemies/zombie.tscn" id="12_rr3l1"]
-[ext_resource type="PackedScene" uid="uid://cxg066b44j7el" path="res://scenes/enemies/boss.tscn" id="13_rr3l1"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_mcpai"]
 texture = ExtResource("1_bg")
@@ -1085,8 +1084,5 @@ shape = SubResource("RectangleShape2D_psnon")
 [node name="CollisionShape2D2_Right" type="CollisionShape2D" parent="StaticBody2D" unique_id=1314301453]
 position = Vector2(1034, 164)
 shape = SubResource("RectangleShape2D_kktx6")
-
-[node name="Boss" parent="." unique_id=1382574351 instance=ExtResource("13_rr3l1")]
-position = Vector2(650, 511)
 
 [connection signal="timeout" from="ZombieSpawner/Timer" to="ZombieSpawner" method="_on_timer_timeout"]

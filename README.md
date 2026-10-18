@@ -90,4 +90,3 @@ Gostaria de deixar os devidos créditos e agradecimentos:
 ├── project.godot       # Arquivo de configuracao da Godot Engine
 └── README.md           # Documentacao do projeto
 ## 📁 Assets
-
