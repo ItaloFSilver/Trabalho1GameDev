@@ -12,6 +12,7 @@ func _process(delta: float) -> void:
 
 
 func _on_button_tentar_novamente_pressed() -> void:
+	GameManager.player_hp = GameManager.player_max_hp
 	get_tree().change_scene_to_file("res://scenes/main_game.tscn")
 
 
