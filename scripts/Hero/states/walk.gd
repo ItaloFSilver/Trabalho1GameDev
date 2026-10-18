@@ -33,9 +33,10 @@ func _physics_update(delta: float) -> void:
 
 	# 3. Aplica a velocidade horizontal e espelha o sprite para a direção correta
 	player.velocity.x = input_direction * move_speed
-
-	if player.has_node("Sprite2D"):
-		player.get_node("Sprite2D").flip_h = (input_direction < 0)
+	if input_direction < 0:
+		player.get_node("Pivot").scale.x = -1
+	else:
+		player.get_node("Pivot").scale.x = 1
 
 	# 4. Aplica o movimento na Godot
 	player.move_and_slide()

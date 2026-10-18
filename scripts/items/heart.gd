@@ -12,14 +12,11 @@ func _ready() -> void:
 func _physics_process(delta: float) -> void:
 	time_passed += delta * 4.0
 	
-	# Queda suave do coração estilo NES
 	if position.y < ground_y - 6.0:
 		position.y += fall_speed * delta
-		# Pequena oscilação horizontal estilo flutuante
 		position.x += sin(time_passed) * 0.3
 
 func _on_body_entered(body: Node2D) -> void:
 	if body.name == "Player" or body is CharacterBody2D:
-		# Coletou o coração!
-		# Futuramente podemos somar munição na HUD do jogador
+		body.cure(2)
 		queue_free()

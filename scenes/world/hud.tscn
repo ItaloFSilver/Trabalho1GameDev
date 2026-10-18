@@ -1,0 +1,57 @@
+[gd_scene format=3 uid="uid://cx3kr0mtxls1p"]
+
+[ext_resource type="Script" uid="uid://bcgil3vm5cxk5" path="res://scripts/HUD/health_bar.gd" id="2_b0j1s"]
+[ext_resource type="Texture2D" uid="uid://xkfv1gwn427i" path="res://assets/ui/full_hp.png" id="2_koycm"]
+[ext_resource type="Texture2D" uid="uid://meg2wbb3gjy8" path="res://assets/ui/empty_hp.png" id="3_p4tu0"]
+
+[node name="hud" type="CanvasLayer" unique_id=68579215]
+
+[node name="PlayerUI" type="HBoxContainer" parent="." unique_id=1765241967]
+anchors_preset = -1
+anchor_left = 0.007
+anchor_top = 0.032
+anchor_right = 0.007
+anchor_bottom = 0.032
+offset_left = -0.06400013
+offset_top = 0.26399994
+offset_right = 56.936
+offset_bottom = 23.264
+
+[node name="Label" type="Label" parent="PlayerUI" unique_id=923095329]
+layout_mode = 2
+size_flags_horizontal = 0
+text = "Player:"
+
+[node name="PlayerHealthBar" type="HBoxContainer" parent="PlayerUI" unique_id=754094414]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+theme_override_constants/separation = 0
+script = ExtResource("2_b0j1s")
+filled_texture = ExtResource("2_koycm")
+empty_texture = ExtResource("3_p4tu0")
+
+[node name="BossUI" type="HBoxContainer" parent="." unique_id=473158366]
+anchors_preset = -1
+anchor_left = 0.007
+anchor_top = 0.079
+anchor_right = 0.007
+anchor_bottom = 0.079
+offset_left = -1.0640001
+offset_top = -0.19200134
+offset_right = 44.936
+offset_bottom = 22.807999
+
+[node name="Label" type="Label" parent="BossUI" unique_id=558270994]
+layout_mode = 2
+size_flags_horizontal = 0
+text = "Boss:    "
+
+[node name="BossHealthBar" type="HBoxContainer" parent="BossUI" unique_id=776042361]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+theme_override_constants/separation = 0
+script = ExtResource("2_b0j1s")
+filled_texture = ExtResource("2_koycm")
+empty_texture = ExtResource("3_p4tu0")

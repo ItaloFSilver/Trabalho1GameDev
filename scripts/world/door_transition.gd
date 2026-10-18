@@ -25,7 +25,7 @@ func _on_body_entered(body: Node2D) -> void:
 		return
 		
 	# Apenas Simon/Player aciona a transição
-	if body.name == "Player" or body is CharacterBody2D:
+	if body.name == "Player":
 		_start_transition()
 
 func _start_transition() -> void:

@@ -1,23 +1,23 @@
 [gd_scene format=3 uid="uid://b7wrc6o32ofww"]
 
-[ext_resource type="Texture2D" path="res://assets/environment/background.png" id="1_bg"]
-[ext_resource type="Texture2D" path="res://assets/environment/mountains.png" id="2_mtn"]
-[ext_resource type="Texture2D" path="res://assets/environment/graveyard.png" id="3_grave"]
-[ext_resource type="Texture2D" path="res://assets/environment/tileset.png" id="4_tiles"]
+[ext_resource type="Texture2D" uid="uid://dfggpfhexx8qi" path="res://assets/environment/background.png" id="1_bg"]
+[ext_resource type="Texture2D" uid="uid://df3b4uvpxxmau" path="res://assets/environment/mountains.png" id="2_mtn"]
+[ext_resource type="Texture2D" uid="uid://cvm7gkme3mwa4" path="res://assets/environment/graveyard.png" id="3_grave"]
+[ext_resource type="Texture2D" uid="uid://b860hhdcaepe8" path="res://assets/environment/tileset.png" id="4_tiles"]
 [ext_resource type="PackedScene" uid="uid://bs7xchaii58py" path="res://scenes/player.tscn" id="5_player"]
 [ext_resource type="PackedScene" uid="uid://bnrilr5q1g7ao" path="res://scenes/platform.tscn" id="6_platform"]
 [ext_resource type="PackedScene" uid="uid://bh3kaurvd8n8c" path="res://scenes/bat.tscn" id="7_bat"]
-[ext_resource type="PackedScene" path="res://scenes/world/candle.tscn" id="8_candle"]
-[ext_resource type="PackedScene" path="res://scenes/world/staircase.tscn" id="9_stairs"]
-[ext_resource type="Texture2D" path="res://assets/environment/props/castle_gate_facade.png" id="10_castle"]
-[ext_resource type="PackedScene" path="res://scenes/world/door_transition.tscn" id="11_door"]
-[ext_resource type="Texture2D" path="res://assets/environment/props/tombstone_1.png" id="12_tomb1"]
-[ext_resource type="Texture2D" path="res://assets/environment/props/tombstone_2.png" id="13_tomb2"]
-[ext_resource type="Texture2D" path="res://assets/environment/props/tombstone_3.png" id="14_tomb3"]
-[ext_resource type="Texture2D" path="res://assets/environment/props/angel_statue.png" id="15_statue"]
-[ext_resource type="Texture2D" path="res://assets/environment/props/gothic_tree_1.png" id="16_tree1"]
-[ext_resource type="Texture2D" path="res://assets/environment/props/gothic_tree_2.png" id="17_tree2"]
-[ext_resource type="Texture2D" path="res://assets/environment/props/street_lamp.png" id="18_lamp"]
+[ext_resource type="PackedScene" uid="uid://df8at2g2hruj5" path="res://scenes/world/candle.tscn" id="8_candle"]
+[ext_resource type="PackedScene" uid="uid://dw8rsn3yn1jvc" path="res://scenes/world/staircase.tscn" id="9_stairs"]
+[ext_resource type="Texture2D" uid="uid://3vj6lrg7ssyi" path="res://assets/environment/props/castle_gate_facade.png" id="10_castle"]
+[ext_resource type="PackedScene" uid="uid://c67x7yq2d4n3p" path="res://scenes/world/door_transition.tscn" id="11_door"]
+[ext_resource type="Texture2D" uid="uid://b653ykdgljcwi" path="res://assets/environment/props/tombstone_1.png" id="12_tomb1"]
+[ext_resource type="Texture2D" uid="uid://dc6h0akfmxa2r" path="res://assets/environment/props/tombstone_2.png" id="13_tomb2"]
+[ext_resource type="Texture2D" uid="uid://cjm88g2rbytsf" path="res://assets/environment/props/tombstone_3.png" id="14_tomb3"]
+[ext_resource type="Texture2D" uid="uid://1p6xwmpi1jf7" path="res://assets/environment/props/angel_statue.png" id="15_statue"]
+[ext_resource type="Texture2D" uid="uid://cngybybdmk7jl" path="res://assets/environment/props/gothic_tree_1.png" id="16_tree1"]
+[ext_resource type="Texture2D" uid="uid://bo7yhacvuw12k" path="res://assets/environment/props/gothic_tree_2.png" id="17_tree2"]
+[ext_resource type="Texture2D" uid="uid://bhvj1ildh3vkb" path="res://assets/environment/props/street_lamp.png" id="18_lamp"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_ground"]
 size = Vector2(1536, 32)
@@ -75,91 +75,89 @@ offset_bottom = 34.0
 texture = SubResource("AtlasTexture_tile_floor")
 stretch_mode = 1
 
-[node name="Staircases" type="Node2D" parent="."]
+[node name="Staircases" type="Node2D" parent="." unique_id=1511907388]
 
-[node name="Staircase1" parent="Staircases" instance=ExtResource("9_stairs")]
+[node name="Staircase1" parent="Staircases" unique_id=671238625 instance=ExtResource("9_stairs")]
 position = Vector2(208, 200)
-step_count = 4
 
-[node name="Platforms" type="Node2D" parent="."]
+[node name="Platforms" type="Node2D" parent="." unique_id=207948387]
 
-[node name="HighPlatform" parent="Platforms" instance=ExtResource("6_platform")]
+[node name="HighPlatform" parent="Platforms" unique_id=566640886 instance=ExtResource("6_platform")]
 position = Vector2(288, 152)
 
-[node name="GraveyardProps" type="Node2D" parent="."]
+[node name="GraveyardProps" type="Node2D" parent="." unique_id=1417149342]
 z_index = -1
 
-[node name="Tree1" type="Sprite2D" parent="GraveyardProps"]
+[node name="Tree1" type="Sprite2D" parent="GraveyardProps" unique_id=1499456709]
 position = Vector2(0, 91)
 texture = ExtResource("16_tree1")
 centered = false
 
-[node name="Tomb1" type="Sprite2D" parent="GraveyardProps"]
+[node name="Tomb1" type="Sprite2D" parent="GraveyardProps" unique_id=1342349153]
 position = Vector2(90, 169)
 texture = ExtResource("12_tomb1")
 centered = false
 
-[node name="Tomb2" type="Sprite2D" parent="GraveyardProps"]
+[node name="Tomb2" type="Sprite2D" parent="GraveyardProps" unique_id=504948276]
 position = Vector2(165, 168)
 texture = ExtResource("13_tomb2")
 centered = false
 
-[node name="AngelStatue" type="Sprite2D" parent="GraveyardProps"]
+[node name="AngelStatue" type="Sprite2D" parent="GraveyardProps" unique_id=778327028]
 position = Vector2(380, 133)
 texture = ExtResource("15_statue")
 centered = false
 
-[node name="Tomb3" type="Sprite2D" parent="GraveyardProps"]
+[node name="Tomb3" type="Sprite2D" parent="GraveyardProps" unique_id=842032878]
 position = Vector2(430, 175)
 texture = ExtResource("14_tomb3")
 centered = false
 
-[node name="Tree2" type="Sprite2D" parent="GraveyardProps"]
+[node name="Tree2" type="Sprite2D" parent="GraveyardProps" unique_id=1788657278]
 position = Vector2(520, 91)
 texture = ExtResource("17_tree2")
 centered = false
 
-[node name="Tomb4" type="Sprite2D" parent="GraveyardProps"]
+[node name="Tomb4" type="Sprite2D" parent="GraveyardProps" unique_id=470214763]
 position = Vector2(590, 169)
 texture = ExtResource("12_tomb1")
 centered = false
 
-[node name="StreetLamp" type="Sprite2D" parent="GraveyardProps"]
+[node name="StreetLamp" type="Sprite2D" parent="GraveyardProps" unique_id=852702289]
 position = Vector2(680, 100)
 texture = ExtResource("18_lamp")
 centered = false
 
-[node name="Tomb5" type="Sprite2D" parent="GraveyardProps"]
+[node name="Tomb5" type="Sprite2D" parent="GraveyardProps" unique_id=1108513198]
 position = Vector2(750, 168)
 texture = ExtResource("13_tomb2")
 centered = false
 
-[node name="CastleEntrance" type="Node2D" parent="."]
+[node name="CastleEntrance" type="Node2D" parent="." unique_id=2007687053]
 position = Vector2(850, -55)
 
-[node name="CastleGateFacade" type="Sprite2D" parent="CastleEntrance"]
+[node name="CastleGateFacade" type="Sprite2D" parent="CastleEntrance" unique_id=1348647421]
 texture = ExtResource("10_castle")
 centered = false
 
-[node name="CastleDoorTransition" parent="." instance=ExtResource("11_door")]
+[node name="CastleDoorTransition" parent="." unique_id=470725383 instance=ExtResource("11_door")]
 position = Vector2(1036, 184)
-target_scene = "res://scenes/castle_interior.tscn"
 
-[node name="Candles" type="Node2D" parent="."]
+[node name="Candles" type="Node2D" parent="." unique_id=1011466298]
 
-[node name="CandleGround1" parent="Candles" instance=ExtResource("8_candle")]
+[node name="CandleGround1" parent="Candles" unique_id=1842204426 instance=ExtResource("8_candle")]
 position = Vector2(130, 192)
 
-[node name="CandleOnPlatform" parent="Candles" instance=ExtResource("8_candle")]
+[node name="CandleOnPlatform" parent="Candles" unique_id=562736568 instance=ExtResource("8_candle")]
 position = Vector2(288, 136)
 
-[node name="CandleGround2" parent="Candles" instance=ExtResource("8_candle")]
+[node name="CandleGround2" parent="Candles" unique_id=645960328 instance=ExtResource("8_candle")]
 position = Vector2(450, 192)
 
-[node name="CandleGround3" parent="Candles" instance=ExtResource("8_candle")]
+[node name="CandleGround3" parent="Candles" unique_id=2003312967 instance=ExtResource("8_candle")]
 position = Vector2(630, 192)
 
-[node name="CandleGround4" parent="Candles" instance=ExtResource("8_candle")]
+[node name="CandleGround4" parent="Candles" unique_id=1118877011 instance=ExtResource("8_candle")]
 position = Vector2(790, 192)
 
 [node name="Player" parent="." unique_id=665909704 instance=ExtResource("5_player")]

@@ -1,0 +1,153 @@
+[gd_scene format=3 uid="uid://8rkjcfxmww0h"]
+
+[ext_resource type="Texture2D" uid="uid://l45xn2nfpymd" path="res://assets/sprites/effects/fireball/fireball_2.png" id="1_eg7xx"]
+[ext_resource type="Script" uid="uid://dkqktghtfqw3w" path="res://scripts/Enemies/fire_ball.gd" id="1_js18q"]
+[ext_resource type="Texture2D" uid="uid://b1esa2uqwlhos" path="res://assets/sprites/effects/fireball/fireball_1.png" id="2_js18q"]
+[ext_resource type="Texture2D" uid="uid://btm8hqobnaqf0" path="res://assets/sprites/effects/fireball/fireball_3.png" id="3_lob8a"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_m3wds"]
+radius = 9.0
+
+[sub_resource type="Animation" id="Animation_08t74"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:texture")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [ExtResource("1_eg7xx")]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Sprite2D:scale")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(0.5, 0.5)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Sprite2D:frame")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [0]
+}
+
+[sub_resource type="Animation" id="Animation_wgic2"]
+resource_name = "growing"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:texture")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2, 0.3, 0.4, 0.5005677, 0.60131085, 0.7, 0.8, 0.9019663),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [ExtResource("2_js18q"), ExtResource("1_eg7xx"), ExtResource("3_lob8a"), ExtResource("1_eg7xx"), ExtResource("3_lob8a"), ExtResource("2_js18q"), ExtResource("1_eg7xx"), ExtResource("3_lob8a"), ExtResource("2_js18q"), ExtResource("3_lob8a")]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Sprite2D:scale")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.33333334, 0.6, 0.7, 0.8, 0.9),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1),
+"update": 0,
+"values": [Vector2(0.2, 0.2), Vector2(0.5, 0.5), Vector2(1, 1), Vector2(1, 1), Vector2(1, 1), Vector2(1, 1)]
+}
+
+[sub_resource type="Animation" id="Animation_od8g1"]
+resource_name = "idle"
+length = 0.6
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:scale")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(1, 1)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Sprite2D:texture")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.100743175, 0.2, 0.3, 0.4, 0.5),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [ExtResource("2_js18q"), ExtResource("1_eg7xx"), ExtResource("3_lob8a"), ExtResource("2_js18q"), ExtResource("1_eg7xx"), ExtResource("3_lob8a")]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Sprite2D:hframes")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [1]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("Sprite2D:frame")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0, 0.10231729, 0.20148635, 0.2990813, 0.4013986, 0.5005677),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [0, 0, 0, 0, 0, 0]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_ecrqa"]
+_data = {
+&"RESET": SubResource("Animation_08t74"),
+&"growing": SubResource("Animation_wgic2"),
+&"idle": SubResource("Animation_od8g1")
+}
+
+[node name="FireBall" type="Area2D" unique_id=384800497]
+collision_mask = 2
+script = ExtResource("1_js18q")
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=877915331]
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("1_eg7xx")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=997159539]
+shape = SubResource("CircleShape2D_m3wds")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=417471342]
+libraries/ = SubResource("AnimationLibrary_ecrqa")
+
+[node name="VisibleOnScreenNotifier2D" type="VisibleOnScreenNotifier2D" parent="." unique_id=1894138537]
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]
+[connection signal="screen_exited" from="VisibleOnScreenNotifier2D" to="." method="_on_visible_on_screen_notifier_2d_screen_exited"]

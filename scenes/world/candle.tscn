@@ -1,7 +1,7 @@
-[gd_scene format=3 uid="uid://worldcandle0001"]
+[gd_scene format=3 uid="uid://df8at2g2hruj5"]
 
-[ext_resource type="Script" path="res://scripts/world/candle.gd" id="1_script"]
-[ext_resource type="Texture2D" path="res://assets/sprites/items/candle.png" id="2_tex"]
+[ext_resource type="Script" uid="uid://c6esl4euywea7" path="res://scripts/world/candle.gd" id="1_script"]
+[ext_resource type="Texture2D" uid="uid://brpfxd8em0nwm" path="res://assets/sprites/items/candle.png" id="2_tex"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_c1"]
 atlas = ExtResource("2_tex")
@@ -20,7 +20,7 @@ animations = [{
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_c2")
 }],
-"loop": true,
+"loop": 1,
 "name": &"burn",
 "speed": 6.0
 }]
@@ -28,13 +28,14 @@ animations = [{
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_candle"]
 size = Vector2(80, 24)
 
-[node name="Candle" type="Area2D"]
+[node name="Candle" type="Area2D" unique_id=40260689]
+collision_mask = 2
 script = ExtResource("1_script")
 
-[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=656777946]
 sprite_frames = SubResource("SpriteFrames_candle")
 animation = &"burn"
 autoplay = "burn"
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=506831955]
 shape = SubResource("RectangleShape2D_candle")

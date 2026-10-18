@@ -1,27 +1,44 @@
 [gd_scene format=3 uid="uid://dw8rsn3yn1jvc"]
 
-[ext_resource type="Script" path="res://scripts/world/staircase.gd" id="1_script"]
-[ext_resource type="Texture2D" path="res://assets/environment/stair_castlevania_step.png" id="2_step"]
+[ext_resource type="Script" uid="uid://b286ehnksu4f" path="res://scripts/world/staircase.gd" id="1_script"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_stair_entry"]
-size = Vector2(16, 20)
+size = Vector2(11.82353, 3.7118425)
 
-[node name="Staircase" type="Node2D"]
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_m3wds"]
+size = Vector2(15, 17)
+
+[node name="Staircase" type="Node2D" unique_id=315915156]
 script = ExtResource("1_script")
-step_count = 4
-step_texture = ExtResource("2_step")
 
-[node name="StepsVisual" type="Node2D" parent="."]
+[node name="StepsVisual" type="Node2D" parent="." unique_id=718564873]
 
-[node name="BottomEntry" type="Area2D" parent="."]
+[node name="BottomEntry" type="Area2D" parent="." unique_id=121868728]
+collision_mask = 2
+metadata/is_top_entry = false
+metadata/climb_vector = Vector2(1, -1)
+metadata/snap_x = 0.0
+metadata/snap_y = 0.0
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="BottomEntry"]
-position = Vector2(0, -2)
+[node name="CollisionShape2D" type="CollisionShape2D" parent="BottomEntry" unique_id=148895305]
+position = Vector2(-6, 3.9999995)
+rotation = 0.025033534
+scale = Vector2(0.9999999, 0.9999999)
 shape = SubResource("RectangleShape2D_stair_entry")
 
-[node name="TopEntry" type="Area2D" parent="."]
+[node name="TopEntry" type="Area2D" parent="." unique_id=2146800974]
 position = Vector2(48, -48)
+collision_mask = 2
+metadata/is_top_entry = true
+metadata/climb_vector = Vector2(1, -1)
+metadata/snap_x = 48.0
+metadata/snap_y = -48.0
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="TopEntry"]
-position = Vector2(0, -2)
-shape = SubResource("RectangleShape2D_stair_entry")
+[node name="CollisionShape2D" type="CollisionShape2D" parent="TopEntry" unique_id=1779969474]
+position = Vector2(1, -2)
+shape = SubResource("RectangleShape2D_m3wds")
+
+[connection signal="body_entered" from="BottomEntry" to="." method="_on_bottom_entry_body_entered"]
+[connection signal="body_exited" from="BottomEntry" to="." method="_on_bottom_entry_body_exited"]
+[connection signal="body_entered" from="TopEntry" to="." method="_on_top_entry_body_entered"]
+[connection signal="body_exited" from="TopEntry" to="." method="_on_top_entry_body_exited"]

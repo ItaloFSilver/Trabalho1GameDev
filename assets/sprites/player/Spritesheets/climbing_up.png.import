@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://o1w4ijci8jje"
-path="res://.godot/imported/barra.png-d283e247ad221c05e79eec95069f17f4.ctex"
+uid="uid://bvy868re2x1ye"
+path="res://.godot/imported/climbing_up.png-1bf2e9da58ce8efa0c13e39d2e2f076c.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/sprites/barra.png"
-dest_files=["res://.godot/imported/barra.png-d283e247ad221c05e79eec95069f17f4.ctex"]
+source_file="res://assets/sprites/player/Spritesheets/climbing_up.png"
+dest_files=["res://.godot/imported/climbing_up.png-1bf2e9da58ce8efa0c13e39d2e2f076c.ctex"]
 
 [params]
 
