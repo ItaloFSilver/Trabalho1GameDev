@@ -989,6 +989,12 @@ physics_layer_0/collision_mask = 7
 sources/0 = SubResource("TileSetAtlasSource_tvbop")
 sources/1 = SubResource("TileSetAtlasSource_rr3l1")
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_psnon"]
+size = Vector2(16.5, 199)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_kktx6"]
+size = Vector2(21, 192)
+
 [node name="CastleInterior" type="Node" unique_id=1182712529]
 script = ExtResource("1_tvbop")
 
@@ -1066,5 +1072,17 @@ position = Vector2(865, 184)
 target_scene = "uid://drtiqhdfykke8"
 
 [node name="HUD" parent="." unique_id=68579215 instance=ExtResource("12_kpxow")]
+
+[node name="StaticBody2D" type="StaticBody2D" parent="." unique_id=1801479428]
+collision_layer = 8
+collision_mask = 0
+
+[node name="CollisionShape2D_Left" type="CollisionShape2D" parent="StaticBody2D" unique_id=754922904]
+position = Vector2(-8, 157)
+shape = SubResource("RectangleShape2D_psnon")
+
+[node name="CollisionShape2D2_Right" type="CollisionShape2D" parent="StaticBody2D" unique_id=1314301453]
+position = Vector2(1034, 164)
+shape = SubResource("RectangleShape2D_kktx6")
 
 [connection signal="timeout" from="ZombieSpawner/Timer" to="ZombieSpawner" method="_on_timer_timeout"]

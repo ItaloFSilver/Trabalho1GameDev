@@ -26,6 +26,12 @@ size = Vector2(1536, 32)
 atlas = ExtResource("4_tiles")
 region = Rect2(64, 48, 64, 48)
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_psnon"]
+size = Vector2(16.5, 200)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_kktx6"]
+size = Vector2(19, 185)
+
 [node name="MainGame" type="Node2D" unique_id=1854347214]
 
 [node name="ParallaxBackground" type="ParallaxBackground" parent="." unique_id=901001]
@@ -174,3 +180,15 @@ position_smoothing_enabled = true
 
 [node name="bat" parent="." unique_id=1317970611 instance=ExtResource("7_bat")]
 position = Vector2(208, 60)
+
+[node name="BarreirasLaterais" type="StaticBody2D" parent="." unique_id=1485249595]
+collision_layer = 8
+collision_mask = 0
+
+[node name="CollisionShape2D_Left" type="CollisionShape2D" parent="BarreirasLaterais" unique_id=943026300]
+position = Vector2(-9, 141)
+shape = SubResource("RectangleShape2D_psnon")
+
+[node name="CollisionShape2D_Right" type="CollisionShape2D" parent="BarreirasLaterais" unique_id=371999930]
+position = Vector2(1163, 161)
+shape = SubResource("RectangleShape2D_kktx6")

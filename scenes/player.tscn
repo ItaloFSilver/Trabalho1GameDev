@@ -541,6 +541,7 @@ height = 44.0
 
 [node name="Player" type="CharacterBody2D" unique_id=55681833]
 collision_layer = 2
+collision_mask = 9
 script = ExtResource("1_fulsm")
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=1210682791]

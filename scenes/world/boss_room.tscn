@@ -992,6 +992,12 @@ physics_layer_0/physics_material = SubResource("PhysicsMaterial_wufgv")
 sources/0 = SubResource("TileSetAtlasSource_6esso")
 sources/1 = SubResource("TileSetAtlasSource_khrls")
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_psnon"]
+size = Vector2(7, 244.5)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_kktx6"]
+size = Vector2(19, 353)
+
 [node name="Boss_Room" type="Node" unique_id=1234407306]
 script = ExtResource("1_o4u8a")
 have_boss = true
@@ -1058,5 +1064,17 @@ position = Vector2(697, 530)
 position = Vector2(859, 412)
 
 [node name="HUD" parent="." unique_id=68579215 instance=ExtResource("14_cshkw")]
+
+[node name="StaticBody2D" type="StaticBody2D" parent="." unique_id=709565449]
+collision_layer = 8
+collision_mask = 0
+
+[node name="CollisionShape2D_Left" type="CollisionShape2D" parent="StaticBody2D" unique_id=1837060485]
+position = Vector2(8, 522)
+shape = SubResource("RectangleShape2D_psnon")
+
+[node name="CollisionShape2D_Right" type="CollisionShape2D" parent="StaticBody2D" unique_id=38381652]
+position = Vector2(1126, 471)
+shape = SubResource("RectangleShape2D_kktx6")
 
 [connection signal="screen_entered" from="Boss/VisibleOnScreenNotifier2D" to="Boss" method="_on_visible_on_screen_notifier_2d_screen_entered"]
