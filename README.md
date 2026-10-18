@@ -10,7 +10,7 @@
 
 | Nome | Matrícula | GitHub |
 | :--- | :---: | :---: |
-| **Gustavo Bersan Moreira Campos** | `202435019` | [@GustavoBersan](https://github.com/GustavoBersan) |
+| **Gustavo Bersan Moreira Campos** | `202435019` | [@Bersan121](https://github.com/Bersan121) |
 | **Ítalo Fagundes Silvério** | `202435020` | [@ItaloFSilver](https://github.com/ItaloFSilver) |
 
 ---
@@ -34,34 +34,27 @@ O objetivo deste projeto é recriar fielmente a jogabilidade, visual retro e din
 - [x] **Movimentação Clássica:**
   - Pulo com trajetória rígida (*pulo travado* no ar).
   - Animação e física de subir e descer escadas.
-  - Animação e mecânica de abaixar e dar chicotadas no chão.
+  - Animação e mecânica de abaixar 
 - [x] **Sistema de Combate e Armas:**
-  - **Vampire Killer:** Ataque com chicote com upgrades de alcance e poder.
-  - **Sub-Armas:** Adaga, Machado, Água Benta e Relógio do Tempo.
+  - **Vampire Killer:** Ataque com Espada.
 - [x] **Inimigos & I.A. Básica:**
-  - Comportamentos clássicos para Zumbis, Morcegos, Esqueletos e Cavaleiros.
+  - Comportamentos clássicos para Zumbis.
   - Lógica de invulnerabilidade temporária (knockback ao sofrer dano).
 - [x] **Interface (HUD):**
   - Barra de vida do jogador e do chefe da fase.
-  - Contador de corações (munição das sub-armas).
-  - Placar de pontuação, estágio e tempo restante.
 - [x] **Design de Fases & Áudio:**
-  - Tilemaps fiéis ao visual 8-bits com suporte a colisão pixel-perfect.
-  - Trilha sonora original em Chiptune e efeitos sonoros retro.
-
+  - Cenário criado com tilemaps
 ---
 
 ## ⌨️ Controles
 
 | Ação | Teclado | Gamepad (Xbox / PlayStation) |
 | :--- | :---: | :---: |
-| **Mover Esquerda / Direita** | `A` / `D` ou `Setas` | `D-Pad` / `Analógico Esquerdo` |
-| **Subir Escada** | `W` ou `Seta Cima` | `D-Pad Cima` |
-| **Descêr Escada / Abaixar** | `S` ou `Seta Baixo` | `D-Pad Baixo` |
-| **Pular** | `Espaço` ou `K` | Botão `A` / `Cross` |
-| **Atacar (Chicote)** | `J` | Botão `X` / `Square` |
-| **Usar Sub-Arma** | `W` + `J` (Cima + Ataque) | `D-Pad Cima` + `X` / `Square` |
-| **Pausar Jogo** | `Enter` / `Esc` | `Start` / `Options` |
+| **Mover Esquerda / Direita** |`Setas` | `D-Pad` / `Analógico Esquerdo` |
+| **Subir Escada** | `Seta Cima` | `D-Pad Cima` |
+| **Descêr Escada / Abaixar** | `Seta Baixo` | `D-Pad Baixo` |
+| **Pular** | `Z` | Botão `A` / `Cross` |
+| **Atacar (Chicote)** | `X` | Botão `X` / `Square` |
 
 ---
 
@@ -96,3 +89,5 @@ Gostaria de deixar os devidos créditos e agradecimentos:
 │   └── components/     # Hitbox, Hurtbox e gerenciadores reutilizaveis
 ├── project.godot       # Arquivo de configuracao da Godot Engine
 └── README.md           # Documentacao do projeto
+## 📁 Assets
+
