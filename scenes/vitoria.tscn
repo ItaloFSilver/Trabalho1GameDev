@@ -1,6 +1,6 @@
 [gd_scene format=3 uid="uid://cpp201rpl0qen"]
 
-[ext_resource type="Script" uid="uid://dvfv18hnomxcb" path="res://scenes/vitoria.gd" id="1_5w2qk"]
+[ext_resource type="Script" uid="uid://dvfv18hnomxcb" path="res://scripts/Screen/vitoria.gd" id="1_5w2qk"]
 [ext_resource type="FontFile" uid="uid://cemcaipmxl0xp" path="res://assets/fonts/GrenzeGotisch-VariableFont_wght.ttf" id="2_3oowa"]
 
 [node name="Control" type="Control" unique_id=734642420]

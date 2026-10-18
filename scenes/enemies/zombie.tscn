@@ -134,6 +134,7 @@ _data = {
 height = 40.0
 
 [node name="Zombie" type="CharacterBody2D" unique_id=276199770 groups=["zombies"]]
+position = Vector2(0, -26)
 collision_layer = 4
 script = ExtResource("1_3pt6v")
 

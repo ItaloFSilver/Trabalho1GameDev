@@ -1,6 +1,6 @@
 [gd_scene format=3 uid="uid://rbeegwokvob8"]
 
-[ext_resource type="Script" uid="uid://b62xc1qvgh325" path="res://scenes/menu_principal.gd" id="1_i85hu"]
+[ext_resource type="Script" uid="uid://b62xc1qvgh325" path="res://scripts/Screen/menu_principal.gd" id="1_i85hu"]
 [ext_resource type="Texture2D" uid="uid://dfggpfhexx8qi" path="res://assets/environment/background.png" id="2_iep14"]
 [ext_resource type="FontFile" uid="uid://cemcaipmxl0xp" path="res://assets/fonts/GrenzeGotisch-VariableFont_wght.ttf" id="2_mk4g1"]
 

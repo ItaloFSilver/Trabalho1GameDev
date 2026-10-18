@@ -1,6 +1,6 @@
 [gd_scene format=3 uid="uid://fbsiya662bx1"]
 
-[ext_resource type="Script" uid="uid://dpcmab3gvxl55" path="res://scenes/game_over.gd" id="1_xeevv"]
+[ext_resource type="Script" uid="uid://dpcmab3gvxl55" path="res://scripts/Screen/game_over.gd" id="1_xeevv"]
 [ext_resource type="FontFile" uid="uid://cemcaipmxl0xp" path="res://assets/fonts/GrenzeGotisch-VariableFont_wght.ttf" id="2_wqhvx"]
 
 [node name="Control" type="Control" unique_id=734642420]
