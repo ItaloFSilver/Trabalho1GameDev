@@ -4,6 +4,10 @@
 [ext_resource type="Texture2D" uid="uid://bu2aircohu6lx" path="res://assets/environment/church_tileset.png" id="2_m3dbc"]
 [ext_resource type="PackedScene" uid="uid://bs7xchaii58py" path="res://scenes/player.tscn" id="3_wufgv"]
 [ext_resource type="PackedScene" uid="uid://cxg066b44j7el" path="res://scenes/enemies/boss.tscn" id="4_m3dbc"]
+[ext_resource type="Script" uid="uid://5jd5h8ngs3ep" path="res://scripts/Enemies/state_machine.gd" id="5_wufgv"]
+[ext_resource type="Script" uid="uid://dhk35pdli7pfo" path="res://scripts/Enemies/boss_states/attack.gd" id="6_d4k5w"]
+[ext_resource type="Script" uid="uid://bd4kmeyw601y8" path="res://scripts/Enemies/boss_states/move.gd" id="7_6esso"]
+[ext_resource type="Script" uid="uid://bn403mxwjeqgv" path="res://scripts/Enemies/boss_states/idle.gd" id="8_khrls"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_d4k5w"]
 texture = ExtResource("1_q124j")
@@ -1002,5 +1006,31 @@ limit_right = 1117
 limit_bottom = 627
 position_smoothing_enabled = true
 
-[node name="Boss" parent="." unique_id=1382574351 instance=ExtResource("4_m3dbc")]
+[node name="Boss" parent="." unique_id=1382574351 node_paths=PackedStringArray("waypoint_nodes") instance=ExtResource("4_m3dbc")]
 position = Vector2(583, 499)
+waypoint_nodes = [NodePath("../Position1"), NodePath("../Position2"), NodePath("../Position3")]
+
+[node name="State_Machine" type="Node" parent="Boss" unique_id=1854779393]
+script = ExtResource("5_wufgv")
+
+[node name="Attack" type="Node" parent="Boss/State_Machine" unique_id=1967233676]
+script = ExtResource("6_d4k5w")
+
+[node name="Move" type="Node" parent="Boss/State_Machine" unique_id=1311563]
+script = ExtResource("7_6esso")
+
+[node name="Idle" type="Node" parent="Boss/State_Machine" unique_id=1007446095]
+script = ExtResource("8_khrls")
+
+[node name="VisibleOnScreenNotifier2D" type="VisibleOnScreenNotifier2D" parent="Boss" unique_id=357135492]
+
+[node name="Position1" type="Marker2D" parent="." unique_id=1501640751]
+position = Vector2(523, 460)
+
+[node name="Position2" type="Marker2D" parent="." unique_id=1661956027]
+position = Vector2(679, 519)
+
+[node name="Position3" type="Marker2D" parent="." unique_id=1929982795]
+position = Vector2(859, 412)
+
+[connection signal="screen_entered" from="Boss/VisibleOnScreenNotifier2D" to="Boss" method="_on_visible_on_screen_notifier_2d_screen_entered"]
