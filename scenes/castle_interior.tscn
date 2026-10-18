@@ -24,6 +24,8 @@ size = Vector2(1066, 32)
 atlas = ExtResource("2_tileset")
 region = Rect2(128.68692, 167.70099, 46.85692, 32)
 
+[sub_resource type="TileSet" id="TileSet_xnke1"]
+
 [node name="CastleInterior" type="Node2D" unique_id=283037784]
 
 [node name="ColorRectDark" type="ColorRect" parent="." unique_id=1162345239]
@@ -190,7 +192,10 @@ metadata/_custom_type_script = "uid://dgbp25xdiog0w"
 autostart = true
 
 [node name="DoorTransition" parent="." unique_id=1835830736 instance=ExtResource("8_door")]
-position = Vector2(860, 179)
+position = Vector2(952, 125)
 target_scene = "uid://drtiqhdfykke8"
+
+[node name="TileMapLayer" type="TileMapLayer" parent="." unique_id=1138846074]
+tile_set = SubResource("TileSet_xnke1")
 
 [connection signal="timeout" from="ZombieSpawner/Timer" to="ZombieSpawner" method="_on_timer_timeout"]
