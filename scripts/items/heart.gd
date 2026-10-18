@@ -18,5 +18,5 @@ func _physics_process(delta: float) -> void:
 
 func _on_body_entered(body: Node2D) -> void:
 	if body.name == "Player" or body is CharacterBody2D:
-
+		body.cure(2)
 		queue_free()

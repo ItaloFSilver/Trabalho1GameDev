@@ -26,7 +26,15 @@ func _ready() -> void:
 func take_damage(amount: int) -> void:
 	current_hp -= amount
 	hp_changed.emit(current_hp, max_hp)
+	if sprite:
+		var blink_tween = create_tween().set_loops(int(1 / 0.15))
+		blink_tween.tween_property(sprite, "modulate:a", 0.2, 0.075)
+		blink_tween.tween_property(sprite, "modulate:a", 1.0, 0.075)
 	
+	await get_tree().create_timer(1).timeout
+
+	if sprite:
+		sprite.modulate.a = 1.0
 	if current_hp <= 0:
 		anim.play("die")
 		await anim.animation_finished
