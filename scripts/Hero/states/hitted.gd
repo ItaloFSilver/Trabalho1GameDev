@@ -27,7 +27,7 @@ func enter(_previous_state: String, _data := {}) -> void:
 
 
 func _physics_update(delta: float) -> void: 
-	# 1. Aplica a gravidade para criar o arco do arremesso
+	
 	if not player.is_on_floor(): 
 		player.velocity += player.get_gravity() * delta 
 		
@@ -35,7 +35,7 @@ func _physics_update(delta: float) -> void:
 	player.move_and_slide() 
 
 	if player.is_on_floor() and player.velocity.y >= 0:     
-		# Checa as teclas para uma transição fluida ao levantar
+		
 		var input_direction := Input.get_axis("move_left", "move_right") 
 		if input_direction != 0: 
 			finished.emit("Walk", {}) 

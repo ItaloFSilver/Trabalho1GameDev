@@ -10,7 +10,7 @@ func enter(_previous_state: String, _data := {}) -> void:
 	if parent.current_hp <= 0:
 		finished.emit("Die", {})
 	parent.velocity = Vector2.ZERO
-	# 1. Dá o play na animação, mas NÃO trava o código esperando ela acabar
+	
 	if parent.anim:
 		parent.anim.play("attack")
 	

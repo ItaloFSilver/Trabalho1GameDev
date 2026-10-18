@@ -13,7 +13,6 @@ func _ready() -> void:
 	if anim:
 		anim.play("walk")
 
-# CORREÇÃO 1: Usar a função nativa de física da Godot
 func _physics_process(delta: float) -> void:
 	if not is_on_floor():
 		velocity.y += gravity * delta
@@ -52,8 +51,6 @@ func _on_hitbox_body_entered(body: CharacterBody2D) -> void:
 func _on_visible_on_screen_notifier_2d_screen_entered() -> void:
 	has_entered_screen = true # Confirma que o zumbi já ficou visível para o jogador
 
-# SINAL 2: Conecte o screen_exited do VisibleOnScreenNotifier2D aqui
 func _on_visible_on_screen_notifier_2d_screen_exited() -> void:
-	# Só devolve para a pool se ele já esteve na tela antes
 	if has_entered_screen:
 		die_or_exit_screen()

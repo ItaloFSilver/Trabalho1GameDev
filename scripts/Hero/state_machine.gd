@@ -10,7 +10,6 @@ func _ready() -> void:
 	set_process(false)
 	set_physics_process(false)
 	
-	# Substituímos o "await" pelo "call_deferred" para fugir do travamento infinito
 	call_deferred("_start_machine")
 
 func _start_machine() -> void:

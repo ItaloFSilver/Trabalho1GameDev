@@ -1,13 +1,10 @@
 class_name DoorTransition
 extends Area2D
 
-## Cena para a qual esta porta deve transicionar
 @export_file("*.tscn") var target_scene: String = "res://scenes/castle_interior.tscn"
 
-## Som tocado ao entrar na porta
 @export var transition_sound: AudioStream = preload("res://assets/audio/sfx/rise.ogg")
 
-## Duração do fade em segundos
 @export var fade_duration: float = 0.5
 
 @onready var fade_rect: ColorRect = $FadeLayer/FadeRect
@@ -24,7 +21,6 @@ func _on_body_entered(body: Node2D) -> void:
 	if _is_transitioning:
 		return
 		
-	# Apenas Simon/Player aciona a transição
 	if body.name == "Player":
 		_start_transition()
 

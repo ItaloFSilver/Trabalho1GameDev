@@ -21,5 +21,4 @@ func _physics_update(delta: float) -> void:
 func handle_death_sequence() -> void:
 	await get_tree().create_timer(3.0).timeout
 	
-	# Recarrega a cena atual (reinicia a fase)
-	#get_tree().reload_current_scene()
+	

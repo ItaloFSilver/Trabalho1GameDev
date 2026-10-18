@@ -13,7 +13,6 @@ func enter(_previous_state: String, _data := {}) -> void:
 		
 	target_pos = parent.waypoints.pick_random()
 	
-	# Evita loop infinito se houver apenas 1 waypoint ou se ele já estiver lá
 	while parent.waypoints.size() > 1 and parent.global_position.distance_to(target_pos) < 10.0:
 		target_pos = parent.waypoints.pick_random()
 		

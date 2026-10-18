@@ -4,7 +4,6 @@ extends Node
 @onready var boss: Boss = $Boss
 
 @export var have_boss :bool
-# Ajuste os caminhos consoante a organização da sua árvore de nós
 @onready var player_hp_bar: HealthBar = $HUD/PlayerUI/PlayerHealthBar
 @onready var boss_hp_bar: HealthBar = $HUD/BossUI/BossHealthBar
 
