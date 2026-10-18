@@ -60,6 +60,18 @@ theme_override_fonts/font = ExtResource("2_mk4g1")
 theme_override_font_sizes/font_size = 25
 text = "jogar"
 
+[node name="Button3" type="Button" parent="VBoxContainer" unique_id=1378015298]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("2_mk4g1")
+theme_override_font_sizes/font_size = 25
+text = "Instruções"
+
+[node name="Button4" type="Button" parent="VBoxContainer" unique_id=162376909]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("2_mk4g1")
+theme_override_font_sizes/font_size = 25
+text = "Referência"
+
 [node name="Button2" type="Button" parent="VBoxContainer" unique_id=548695185]
 layout_mode = 2
 theme_override_fonts/font = ExtResource("2_mk4g1")
@@ -67,5 +79,6 @@ theme_override_font_sizes/font_size = 25
 text = "Sair"
 
 [connection signal="pressed" from="VBoxContainer/Button" to="." method="_on_button_jogar_pressed"]
-[connection signal="pressed" from="VBoxContainer/Button2" to="." method="_on_button_2_pressed"]
+[connection signal="pressed" from="VBoxContainer/Button3" to="." method="_on_button_instrucoes_pressed"]
+[connection signal="pressed" from="VBoxContainer/Button4" to="." method="_on_button_referencia_pressed"]
 [connection signal="pressed" from="VBoxContainer/Button2" to="." method="_on_button_sair_pressed"]

@@ -1,0 +1,37 @@
+[gd_scene format=3 uid="uid://cvhevm40w2tm3"]
+
+[ext_resource type="Script" uid="uid://bucmxepvy3mff" path="res://scenes/referencias.gd" id="1_kfbhk"]
+[ext_resource type="Texture2D" uid="uid://t1fn5jfousrr" path="res://assets/ui/game_over_banner.png" id="2_2a54i"]
+[ext_resource type="FontFile" uid="uid://cemcaipmxl0xp" path="res://assets/fonts/GrenzeGotisch-VariableFont_wght.ttf" id="2_2db0w"]
+
+[node name="Control" type="Control" unique_id=1202788341]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_kfbhk")
+
+[node name="TextureRect" type="TextureRect" parent="." unique_id=208363954]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("2_2a54i")
+
+[node name="Button" type="Button" parent="." unique_id=306194040]
+layout_mode = 0
+offset_left = 1047.0
+offset_top = 548.0
+offset_right = 1099.0
+offset_bottom = 586.0
+theme_override_colors/font_color = Color(0.8745098, 0.4392157, 0.26666668, 1)
+theme_override_fonts/font = ExtResource("2_2db0w")
+theme_override_font_sizes/font_size = 20
+text = "Voltar
+"
+
+[connection signal="pressed" from="Button" to="." method="_on_button_voltar_pressed"]
