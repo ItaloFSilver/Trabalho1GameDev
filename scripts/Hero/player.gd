@@ -12,30 +12,42 @@ var current_stair_snap_x := 0.0
 var current_stair_is_top := false
 var current_stair_snap_y := 0.0
 
-@export var max_health: int = 16 # Castlevania clássico usa 16 pontos/barras
+@export var max_health: int = 16 
 @export var current_health: int
-@export var damage: int = 1 # Dano do chicote
+@export var damage: int = 1 
 var is_invincible := false
-@export var invincibility_duration := 1.5 # Segundos piscando após tomar dano
+@export var invincibility_duration := 1.5 
 
 @onready var anim: AnimationPlayer = $AnimationPlayer 
 @onready var sprite: Sprite2D = $Pivot/Sprite2D
-@onready var state_machine = $State_Machine # Ajuste para o nome do nó da sua máquina de estados
+@onready var state_machine = $State_Machine 
 
 func _ready() -> void:
-	current_health = max_health
+	# Lê a vida do Autoload e atualiza a interface no início da fase
+	max_health = GameManager.player_max_hp
+	current_health = GameManager.player_hp
+	hp_changed.emit(current_health, max_health)
 
 func _process(_delta: float) -> void:
-	
 	pass
 
-
+func cure(amount: int)->void:
+	if current_health < max_health:
+		current_health += amount
+	if current_health >= max_health:
+		current_health = max_health
+		
+	GameManager.player_hp = current_health
+	hp_changed.emit(current_health, max_health)
+	
 func take_damage(amount: int, attacker_pos_x: float) -> void:
 	if is_invincible:
 		return
 		
 	current_health -= amount
+	GameManager.player_hp = current_health
 	hp_changed.emit(current_health, max_health)
+	
 	if current_health <= 0:
 		die()
 		return
@@ -59,7 +71,6 @@ func start_invincibility() -> void:
 	if sprite:
 		sprite.modulate.a = 1.0
 		
-
 func enter_stair_zone(stair_direction: Vector2, snap_x: float, snap_y: float, is_top: bool) -> void:
 	is_near_stairs = true
 	current_stair_direction = stair_direction
@@ -75,15 +86,12 @@ func die() -> void:
 	if state_machine:
 		state_machine._transition_to_next_state("Dead") 
 
-
 func _on_castle_door_transition_body_entered(body: Node2D) -> void:
-	pass # Replace with function body.
-
+	pass 
 
 func _on_castle_door_transition_body_exited(body: Node2D) -> void:
-	pass # Replace with function body.
-
+	pass 
 
 func _on_weapon_area_body_entered(body: CharacterBody2D) -> void:
-	body.take_damage(16)
-	pass # Replace with function body.
+	body.take_damage(2)
+	pass
