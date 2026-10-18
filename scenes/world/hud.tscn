@@ -32,7 +32,6 @@ filled_texture = ExtResource("2_koycm")
 empty_texture = ExtResource("3_p4tu0")
 
 [node name="BossUI" type="HBoxContainer" parent="." unique_id=473158366]
-visible = false
 anchors_preset = -1
 anchor_left = 0.007
 anchor_top = 0.079

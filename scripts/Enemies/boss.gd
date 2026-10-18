@@ -39,6 +39,7 @@ func take_damage(amount: int) -> void:
 		anim.play("die")
 		await anim.animation_finished
 		await get_tree().create_timer(1.0).timeout
+		current_hp = max_hp
 		get_tree().change_scene_to_file("res://scenes/vitoria.tscn")
 
 func _on_visible_on_screen_notifier_2d_screen_entered() -> void:
