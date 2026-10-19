@@ -8,6 +8,7 @@ extends Node
 @onready var boss_hp_bar: HealthBar = $HUD/BossUI/BossHealthBar
 
 func _ready() -> void:
+	$HUD/BossUI.show()
 	player.hp_changed.connect(player_hp_bar.update_hp)
 	if have_boss:
 		boss.hp_changed.connect(boss_hp_bar.update_hp)

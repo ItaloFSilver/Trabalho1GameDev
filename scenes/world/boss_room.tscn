@@ -1071,9 +1071,6 @@ position = Vector2(859, 412)
 
 [node name="HUD" parent="." unique_id=68579215 instance=ExtResource("14_cshkw")]
 
-[node name="BossUI" parent="HUD" index="1" unique_id=473158366]
-visible = true
-
 [node name="StaticBody2D" type="StaticBody2D" parent="." unique_id=709565449]
 collision_layer = 8
 collision_mask = 0
@@ -1087,5 +1084,3 @@ position = Vector2(1126, 471)
 shape = SubResource("RectangleShape2D_kktx6")
 
 [connection signal="screen_entered" from="Boss/VisibleOnScreenNotifier2D" to="Boss" method="_on_visible_on_screen_notifier_2d_screen_entered"]
-
-[editable path="HUD"]
